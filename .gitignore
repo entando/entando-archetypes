@@ -1,0 +1,8 @@
+nb-configuration.xml
+target
+bundle-*/target/
+bundle-*/nb-configuration.xml
+plugin-*/target/
+plugin-*/nb-configuration.xml
+portal-*/target/
+portal-*/nb-configuration.xml

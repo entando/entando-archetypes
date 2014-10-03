@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<code>${artifactId}</code>
+	<description>Widget: ${widget-human-readable-description}</description>
+	<!--
+	<dependencies>
+		<code>...</code>
+		<code>...</code>
+	</dependencies>
+	-->
+	<installation>
+		<environment code="production">
+			<defaultSqlResources>
+				<datasource name="portDataSource">
+classpath:sql/bundles/${artifactId}/port_data_production.sql
+				</datasource>
+				<datasource name="servDataSource">
+classpath:sql/bundles/${artifactId}/serv_data_production.sql
+				</datasource>
+			</defaultSqlResources>
+		</environment>
+	</installation>
+</component>

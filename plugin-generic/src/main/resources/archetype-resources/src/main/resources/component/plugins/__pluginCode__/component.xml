@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+	<code>${pluginCode}</code>
+	<description>${pluginName}</description>
+	<dependencies>
+		<!--
+		<code>firstDependency</code>
+		<code>secondDependency</code>
+		-->
+	</dependencies>
+	<installation>
+		<tableMapping>
+			<datasource name="portDataSource">
+				<!--
+				<class>org.entando.entando.plugins.${pluginCode}.aps.system.init.portdb.FirstTable</class>
+				<class>org.entando.entando.plugins.${pluginCode}.aps.system.init.portdb.SecondTable</class>
+				-->
+			</datasource>
+			<datasource name="servDataSource">
+				<!--
+				<class>org.entando.entando.plugins.${pluginCode}.aps.system.init.servdb.ThirdTable</class>
+				<class>org.entando.entando.plugins.${pluginCode}.aps.system.init.servdb.FourthTable</class>
+				-->
+			</datasource>
+		</tableMapping>
+		<environment code="production">
+			<defaultSqlResources>
+				<datasource name="portDataSource">
+classpath:sql/plugins/${pluginCode}/port_data_production.sql
+				</datasource>
+				<datasource name="servDataSource">
+classpath:sql/plugins/${pluginCode}/serv_data_production.sql
+				</datasource>
+			</defaultSqlResources>
+		</environment>
+		<environment code="test">
+			<defaultSqlResources>
+				<datasource name="portDataSource">
+classpath:sql/plugins/${pluginCode}/port_data_test.sql
+				</datasource>
+				<datasource name="servDataSource">
+classpath:sql/plugins/${pluginCode}/serv_data_test.sql
+				</datasource>
+			</defaultSqlResources>
+		</environment>
+	</installation>
+</component>

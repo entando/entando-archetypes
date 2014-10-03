@@ -1,0 +1,24 @@
+<contentType>
+	<defaultModelId>1000X</defaultModelId>
+	<listModelId>100X1</listModelId>
+	<typeCode>${content-three-caps-letters-code}</typeCode>
+	<typeDescription>CHANGE ME in src/main/resources/component/bundles/${artifactId}/postprocess/${content-three-caps-letters-code}.xml</typeDescription>
+	<attributes>
+		<attribute>
+			<name>...</name>
+			<type>...</type>
+			<roles>
+				<role>...</role>
+			</roles>
+			<searchable>...</searchable>
+			<indexable>...</indexable>
+			<validationRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="textAttributeValidationRules">
+				<required>true</required>
+			</validationRules>
+		</attribute>
+		<attribute>
+			...
+		</attribute>
+		...
+	</attributes>
+</contentType>

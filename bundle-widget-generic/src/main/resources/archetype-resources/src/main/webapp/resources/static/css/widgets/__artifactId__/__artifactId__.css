@@ -1,0 +1,16 @@
+/**
+  EXAMPLE
+  It is always a good idea to protect CSS aimed at Widgets into their own .selector
+  Helps a lot when it comes to publish them wherever / whenever you want.
+**/
+
+/*
+
+.${artifactId} {
+	background-color: lime;
+	color: #383838;
+	border: 2px solid #000000;
+}
+
+*/
+

@@ -1,0 +1,7 @@
+<project name="${artifactId}" default="WAR-build" basedir=".">
+	<description>${artifactId} - Build file</description>
+	
+	<import file="buildProperties.xml"/>
+	<import file="buildTasks.xml"/>
+	
+</project>

@@ -1,0 +1,11 @@
+<!--
+  keep the 10000 range for the Bundles
+  change the X to something suitable and unused
+  You'll want to provide at least one Default Content Model, and one Content Model for lists
+-->
+<contentModel>
+  <id>1000X</id>
+  <contentType>${content-three-caps-letters-code}</contentType>
+  <description>Full - Default</description>
+  <shape><![CDATA[<p>Hello World!</p>]]></shape>
+</contentModel>
