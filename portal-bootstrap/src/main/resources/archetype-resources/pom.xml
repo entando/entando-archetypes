@@ -196,6 +196,7 @@
 							<includes>WEB-INF/aps/jsp/internalservlet/api/**/*.jsp</includes>
 						</configuration>
 					</execution>
+					<!--
 					<execution>
 						<id>unpack-dependencies-bootstrap</id>
 						<phase>prepare-package</phase>
@@ -219,6 +220,7 @@
 							<includes>resources/static/entando-misc-bootstrap/bootstrap/bootstrap/**</includes>
 						</configuration>
 					</execution>
+					-->
 				</executions>
 			</plugin>
 			<plugin>
@@ -547,7 +549,8 @@
 					</dependency>
 				</dependencies>
 				<configuration>
-					<packagingExcludes>WEB-INF/classes/**/*.tld,resources/static/entando-misc-bootstrap/**</packagingExcludes>
+					<packagingExcludes>WEB-INF/classes/**/*.tld<!--,resources/static/entando-misc-bootstrap/**--></packagingExcludes>
+					<!--
 					<webResources>
 						<resource>
 							<directory>${project.build.directory}/entando-misc-bootstrap/resources/static/entando-misc-bootstrap/bootstrap</directory>
@@ -557,6 +560,7 @@
 							</includes>
 						</resource>
 					</webResources>
+					-->
 				</configuration>
 			</plugin>
 			<plugin>
