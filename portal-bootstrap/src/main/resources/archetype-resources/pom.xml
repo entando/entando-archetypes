@@ -457,16 +457,15 @@
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>7.5.1.v20110908</version>
+				<version>7.6.16.v20140903</version>
 				<configuration>
-					<!-- <jettyConfig>${basedir}/src/main/config/jetty.xml</jettyConfig> -->
 					<scanIntervalSeconds>5</scanIntervalSeconds>
 					<webAppSourceDirectory>${basedir}/src/main/webapp</webAppSourceDirectory>
-					<webAppConfig>
+					<webApp>
 						<defaultsDescriptor>${basedir}/src/main/config/webdefault.xml</defaultsDescriptor>
 						<contextPath>/${project.artifactId}</contextPath>
 						<jettyEnvXml>${project.build.directory}/jetty/jetty-env.xml</jettyEnvXml>
-					</webAppConfig>
+					</webApp>
 				</configuration>
 				<dependencies>
 					<dependency>
