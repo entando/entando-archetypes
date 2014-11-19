@@ -2,12 +2,19 @@
 <component>
 	<code>${pluginCode}</code>
 	<description>${pluginName}</description>
+	<!--
+	<artifact>
+		<artifactId>${project.artifactId}</artifactId>
+		<groupId>${project.groupId}</groupId>
+		<version>${project.version}</version>
+	</artifact>
+	-->
+	<!--
 	<dependencies>
-		<!--
 		<code>firstDependency</code>
 		<code>secondDependency</code>
-		-->
 	</dependencies>
+	-->
 	<installation>
 		<tableMapping>
 			<datasource name="portDataSource">
