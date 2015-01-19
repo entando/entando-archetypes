@@ -14,17 +14,11 @@
 	<url>http://www.entando.com/</url>
 	<licenses>
 		<license>
-			<name>GNU GENERAL PUBLIC LICENSE,  Version 2, June 1991</name>
-			<url>http://www.gnu.org/licenses/gpl-2.0.txt</url>
+			<name>GNU LESSER GENERAL PUBLIC LICENSE,  Version 2.1, February 1999</name>
+			<url>https://www.gnu.org/licenses/lgpl-2.1.txt</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
-	<scm>
-		<connection>scm:git:git://github.com/entando/entando-archetype-plugin-generic.git</connection>
-		<developerConnection>scm:git:git@github.com:entando/entando-archetype-plugin-generic.git</developerConnection>
-		<url>https://github.com/entando/entando-archetype-plugin-generic</url>
-	  <tag>HEAD</tag>
-  </scm>
 	<developers>
 		<developer>
 			<id>e.santoboni</id>
@@ -34,11 +28,11 @@
 		<developer>
 			<id>w.ghelfi</id>
 			<name>William Ghelfi</name>
-			<email>w.ghelfi@entando.com</email>
+			<email>william@williamghelfi.com</email>
 		</developer>
 	</developers>
 	<organization>
-		<name>Entando S.r.l.</name>
+		<name>Entando Corporation</name>
 		<url>http://www.entando.com/</url>
 	</organization>
 	<build>
