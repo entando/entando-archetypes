@@ -22,6 +22,10 @@
         <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
         <param-value>/WEB-INF/apsadmin/tiles.xml,/WEB-INF/plugins/**/apsadmin/**tiles.xml</param-value>
     </context-param>
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.entando.entando.aps.system.XmlWebApplicationContext</param-value>
+    </context-param>
     <filter>
         <filter-name>struts2</filter-name>
         <filter-class>com.agiletec.apsadmin.system.dispatcher.StrutsPrepareAndExecuteFilter</filter-class>
