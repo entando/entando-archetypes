@@ -196,7 +196,6 @@
 							<includes>WEB-INF/aps/jsp/internalservlet/api/**/*.jsp</includes>
 						</configuration>
 					</execution>
-					<!--
 					<execution>
 						<id>unpack-dependencies-bootstrap</id>
 						<phase>prepare-package</phase>
@@ -220,7 +219,6 @@
 							<includes>resources/static/entando-misc-bootstrap/bootstrap/bootstrap/**</includes>
 						</configuration>
 					</execution>
-					-->
 				</executions>
 			</plugin>
 			<plugin>
@@ -539,17 +537,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.2</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.codehaus.plexus</groupId>
-						<artifactId>plexus-archiver</artifactId>
-						<version>2.4.1</version>
-					</dependency>
-				</dependencies>
+				<version>2.6</version>
 				<configuration>
 					<packagingExcludes>WEB-INF/classes/**/*.tld<!--,resources/static/entando-misc-bootstrap/**--></packagingExcludes>
-					<!--
 					<webResources>
 						<resource>
 							<directory>${project.build.directory}/entando-misc-bootstrap/resources/static/entando-misc-bootstrap/bootstrap</directory>
@@ -559,7 +549,6 @@
 							</includes>
 						</resource>
 					</webResources>
-					-->
 				</configuration>
 			</plugin>
 			<plugin>
