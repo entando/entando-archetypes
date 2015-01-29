@@ -33,7 +33,6 @@
 	</organization>
 	<modules>
 		<module>bundle-content</module>
-		<module>bundle-misc</module>
 		<module>bundle-pagemodel-generic</module>
 		<module>bundle-widget-generic</module>
 		<module>plugin-generic</module>
