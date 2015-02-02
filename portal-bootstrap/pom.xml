@@ -9,7 +9,7 @@
 	<groupId>org.entando.entando</groupId>
 	<artifactId>entando-archetype-portal-bootstrap</artifactId>
 	<packaging>maven-archetype</packaging>
-	<name>Entando: Archetype for a Bootstrap Portal</name>
+	<name>Entando: Archetype for Bootstrap Portal</name>
 	<description>Twitter Bootstrap Portal Archetype for Entando: an agile, modern and user-centric open source portal-like platform.</description>
 	<url>http://www.entando.com/</url>
 	<licenses>

@@ -9,8 +9,8 @@
 	<groupId>org.entando.entando</groupId>
 	<artifactId>entando-archetype-plugin-generic</artifactId>
 	<packaging>maven-archetype</packaging>
-	<name>Entando: Archetype for Generic Plugin</name>
-	<description>Generic Plugin Archetype for Entando:  an agile, modern and user-centric open source portal-like platform.</description>
+	<name>Entando: Archetype for Plugin</name>
+	<description>Plugin Archetype for Entando:  an agile, modern and user-centric open source portal-like platform.</description>
 	<url>http://www.entando.com/</url>
 	<licenses>
 		<license>

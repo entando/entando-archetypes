@@ -32,10 +32,10 @@
 		<url>http://www.entando.com/</url>
 	</organization>
 	<modules>
-		<module>bundle-content</module>
-		<module>bundle-pagemodel-generic</module>
-		<module>bundle-widget-generic</module>
-		<module>plugin-generic</module>
+		<module>bundle-content-type</module>
+		<module>bundle-theme</module>
+		<module>bundle-widget</module>
+		<module>plugin</module>
 		<module>portal-bootstrap</module>
 		<module>portal-generic</module>
 	</modules>

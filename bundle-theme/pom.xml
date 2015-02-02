@@ -7,10 +7,10 @@
 		<version>4.1.2-SNAPSHOT</version>
 	</parent>
 	<groupId>org.entando.entando</groupId>
-	<artifactId>entando-archetype-bundle-pagemodel-generic</artifactId>
+	<artifactId>entando-archetype-bundle-theme-generic</artifactId>
 	<packaging>maven-archetype</packaging>
-	<name>Entando: Archetype for Generic Page Model Bundle</name>
-	<description>Generic Page Bundle Archetype for Entando.</description>
+	<name>Entando: Archetype for Theme (Page Model) Bundle</name>
+	<description>Theme (Page Model) Bundle Archetype for Entando.</description>
 	<url>http://www.entando.com/</url>
 	<licenses>
 		<license>

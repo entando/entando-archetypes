@@ -7,10 +7,10 @@
 		<version>4.1.2-SNAPSHOT</version>
 	</parent>
 	<groupId>org.entando.entando</groupId>
-	<artifactId>entando-archetype-bundle-content</artifactId>
+	<artifactId>entando-archetype-bundle-widget-generic</artifactId>
 	<packaging>maven-archetype</packaging>
-	<name>Entando: Archetype for Content Bundle</name>
-	<description>Content Bundle Archetype for Entando.</description>
+	<name>Entando: Archetype for Widget Bundle</name>
+	<description>Widget Bundle Archetype for Entando.</description>
 	<url>http://www.entando.com/</url>
 	<licenses>
 		<license>
