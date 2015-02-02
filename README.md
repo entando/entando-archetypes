@@ -1,8 +1,8 @@
 # entando-archetypes
 
 ```entando-archetypes``` is a fundamental project that provides basic templates/models  
-that allows you to create easily and quickly your standard Entando portal application, 
-new Entando components such as Plugins, and Bundles.
+that allows you to create easily and quickly your standard **Entando portal** application, 
+new **Entando components** such as Plugins, and Bundles.
 
 The **Entando archetypes** project includes the following modules:
 
