@@ -24,14 +24,14 @@
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				<a class="brand" href="#"><img src="<wp:imgURL />entando-logo.png" alt="Entando - Simplifying Enterprise Portals" /></a>
-					<ul class="nav">
-						<li><a href="http://www.entando.com">Home of Entando</a></li>
-						<li class="divider-vertical"></li>
-						<li><a href="http://github.com/entando/">Source code and online docs at GitHub</a></li>
-						<li class="divider-vertical"></li>
-						<li><a href="http://sourceforge.net/projects/japs">Entando at SourceForge</a></li>
-					</ul>
+				<a class="brand" href="#"><img src="<wp:imgURL />entando-logo.png" alt="Entando - Access. Build. Connect." /></a>
+				<ul class="nav">
+					<li><a href="http://www.entando.com">Home of Entando</a></li>
+					<li class="divider-vertical"></li>
+					<li><a href="http://github.com/entando/">Source code and online docs at GitHub</a></li>
+					<li class="divider-vertical"></li>
+					<li><a href="http://sourceforge.net/projects/japs">Entando at SourceForge</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
