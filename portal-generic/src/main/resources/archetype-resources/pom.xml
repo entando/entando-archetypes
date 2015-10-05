@@ -100,7 +100,7 @@
 		<entando.version>4.2.0-SNAPSHOT</entando.version>
 		<spring.version>4.1.4.RELEASE</spring.version>
 		<struts2.version>2.3.16.3</struts2.version>
-		<cxf.version>3.0.4</cxf.version>
+		<cxf.version>2.7.5</cxf.version>
 	</properties>
 	<build>
 		<finalName>${artifactId}</finalName>
