@@ -325,6 +325,7 @@
 			<arg line=" -u${mysql.username}"/>
 			<arg line=" -p${mysql.password}"/>
 			<arg line="--database" />
+			<arg line="--routines" />
 			<arg line="${webappname}${test.marker}Port"/>
 			<arg line="-r"/>
 			<arg path="${basedir}/src/${project.src.branch}/db/mysql/${webappname}${test.marker}Port.sql" />
@@ -337,6 +338,7 @@
 			<arg line=" -u${mysql.username}"/>
 			<arg line=" -p${mysql.password}"/>
 			<arg line="--database" />
+			<arg line="--routines" />
 			<arg line="${webappname}${test.marker}Serv"/>
 			<arg line="-r"/>
 			<arg path="${basedir}/src/${project.src.branch}/db/mysql/${webappname}${test.marker}Serv.sql" />
