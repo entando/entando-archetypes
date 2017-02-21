@@ -67,6 +67,23 @@
 				<env.db.environment>develop</env.db.environment>
 			</properties>
 		</profile>
+		
+		<!-- Added for jboss -->
+        <profile>
+            <id>production-jboss</id>
+            <activation>
+                <property>
+                    <name>env.MAVEN_WORKING_MODE</name>
+                    <value>production-jboss</value>
+                </property>
+            </activation>
+            <properties>
+                <env>production-jboss</env>
+                <env.db.environment>production</env.db.environment>
+                <jboss>jboss</jboss>
+            </properties>
+        </profile>
+		
 	</profiles>
 	<properties>
 		<!--
@@ -264,46 +281,112 @@
 							</resources>
 						</configuration>
 					</execution>
+                    <execution>
+                        <id>copy-resources-webxml</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>src/main/webapp/WEB-INF</outputDirectory>
+                            <encoding>UTF-8</encoding>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/config</directory>
+                                    <includes>
+                                        <include>web.xml</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-resources-webxml-jboss</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>src/main/webapp/WEB-INF</outputDirectory>
+                            <encoding>UTF-8</encoding>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/config/${jboss}</directory>
+                                    <includes>
+                                        <include>web.xml</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-resources-contextxml</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>src/main/webapp/META-INF</outputDirectory>
+                            <encoding>UTF-8</encoding>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/config</directory>
+                                    <includes>
+                                        <include>context.xml</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-resources-contextxml-jboss</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>src/main/webapp/META-INF</outputDirectory>
+                            <encoding>UTF-8</encoding>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/config/${jboss}</directory>
+                                    <includes>
+                                        <include>context.xml</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
 					<execution>
-						<id>copy-resources-webxml</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>src/main/webapp/WEB-INF</outputDirectory>
-							<encoding>UTF-8</encoding>
-							<resources>
-								<resource>
-									<directory>src/main/config</directory>
-									<includes>
-										<include>web.xml</include>
-									</includes>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>copy-resources-contextxml</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>src/main/webapp/META-INF</outputDirectory>
-							<encoding>UTF-8</encoding>
-							<resources>
-								<resource>
-									<directory>src/main/config</directory>
-									<includes>
-										<include>context.xml</include>
-									</includes>
-									<filtering>true</filtering>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
+                        <id>copy-jndi-lookup-jboss</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>src/main/webapp/WEB-INF/classes/spring</outputDirectory>
+                            <encoding>UTF-8</encoding>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/config/${jboss}</directory>
+                                    <includes>
+                                        <include>jbossBaseSystemConfig.xml</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+					
 					<execution>
 						<id>copy-resources-jettycontextxml</id>
 						<phase>validate</phase>
