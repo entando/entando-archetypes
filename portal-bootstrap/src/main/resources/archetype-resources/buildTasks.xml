@@ -49,6 +49,19 @@
 			<arg line="-DskipTests"/>
 		</exec>
 	</target>
+	
+	<!-- Added for jboss -->
+	<target name="WAR-build-jboss" depends="clean" description="Build the WAR for JBOSS">
+		<echo message="========================================================================" />
+		<echo message=".:[Maven] :: Packaging the Jboss WAR..." />
+		<echo message="========================================================================" />
+		<exec executable="mvn" dir="${basedir}">
+			<env key="MAVEN_WORKING_MODE" value="production-jboss"/>
+			<arg line="-P !development-windows"/>
+			<arg value="package"/>
+			<arg line="-DskipTests"/>
+		</exec>
+	</target>
 
 	<target name="WAR-build-standalone" depends="clean" description="Build the standalone executable WAR">
 		<echo message="========================================================================" />
