@@ -140,17 +140,6 @@
     </error-page>
 	
 	
-	
-    <jsp-config>
-        <taglib>
-            <taglib-uri>/aps-core</taglib-uri>
-            <taglib-location>/WEB-INF/tld/aps-core.tld</taglib-location>
-        </taglib>
-        <taglib>
-            <taglib-uri>/jacms-aps-core</taglib-uri>
-            <taglib-location>/WEB-INF/tld/jacms-aps-core.tld</taglib-location>
-        </taglib>
-    </jsp-config>
     <!-- envs used by jBoss : start -->
     <env-entry>
         <env-entry-name>logName</env-entry-name>
