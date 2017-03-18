@@ -19,7 +19,7 @@
         <param-value>struts-default.xml,struts-plugin.xml,struts.xml,entando-struts-plugin.xml,japs-struts-plugin.xml</param-value>
     </context-param>
     <context-param>
-        <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+        <param-name>org.apache.tiles.definition.DefinitionsFactory.DEFINITIONS_CONFIG</param-name>
         <param-value>/WEB-INF/apsadmin/tiles.xml,/WEB-INF/plugins/**/apsadmin/**tiles.xml</param-value>
     </context-param>
 	<context-param>

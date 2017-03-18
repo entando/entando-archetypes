@@ -20,7 +20,7 @@
         <param-value>struts-default.xml,struts-plugin.xml,struts.xml,entando-struts-plugin.xml,japs-struts-plugin.xml</param-value>
     </context-param>
     <context-param>
-        <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+        <param-name>org.apache.tiles.definition.DefinitionsFactory.DEFINITIONS_CONFIG</param-name>
         <param-value>/WEB-INF/apsadmin/tiles.xml,/WEB-INF/plugins/**/apsadmin/**tiles.xml</param-value>
     </context-param>
 	<context-param>
@@ -54,6 +54,11 @@
     <servlet>
         <servlet-name>ControllerServlet</servlet-name>
         <servlet-class>org.entando.entando.aps.servlet.ControllerServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>PreviewControllerServlet</servlet-name>
+        <servlet-class>org.entando.entando.aps.servlet.PreviewControllerServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
@@ -94,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/pages/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PreviewControllerServlet</servlet-name>
+        <url-pattern>/preview/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Struts2ExtServlet</servlet-name>
