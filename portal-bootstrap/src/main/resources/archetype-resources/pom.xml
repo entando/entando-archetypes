@@ -115,7 +115,7 @@
 		<skipDerby>true</skipDerby>
 		<skipStandalone>true</skipStandalone>
 		<entando.version>4.3.0-SNAPSHOT</entando.version>
-		<spring.version>4.1.5.RELEASE</spring.version>
+		<spring.version>4.1.6.RELEASE</spring.version>
 		<struts2.version>2.5.10.1</struts2.version>
 		<cxf.version>2.7.14</cxf.version>
 	</properties>
