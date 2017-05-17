@@ -6,3 +6,13 @@ plugin-*/target/
 plugin-*/nb-configuration.xml
 portal-*/target/
 portal-*/nb-configuration.xml
+
+.project
+.settings/
+bundle-*/.project
+bundle-*/.settings
+portal-*/.project
+portal-*/.settings
+plugin/.project
+plugin/.settings/
+
