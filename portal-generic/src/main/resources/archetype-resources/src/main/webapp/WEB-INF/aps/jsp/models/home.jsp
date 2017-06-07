@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="<wp:info key="currentLang" />">
     <head>
-        <title>Entando - Log in</title>
+        <title>Entando - Welcome</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charset="utf-8" />
         <link rel="shortcut icon" href="<wp:resourceURL />administration/img/favicon-entando.png">
@@ -28,9 +28,7 @@
                 If you can see this page, then the people who own this host have just installed <strong>Entando</strong> successfully.<br/>
                 They now have to replace this placeholder page or just its contents.
             </div>
-
             <div class="spacer-landing"></div>
-
             <div class="entando-intro">
                 You can go to the login form and use the following credentials to Enter the Administration Area
             </div>
@@ -50,9 +48,7 @@
                 <a href="http://github.com/entando/" target="_blank"><img src="<wp:resourceURL />administration/img/github.png"></a>
                 <a href="http://twitter.net/projects/japs" target="_blank"><img src="<wp:resourceURL />administration/img/twitter.png"></a>
             </div>
-
         </div>
-
         <div id="bottom-footer">
             <div class="copyright-entando">Copyright 2017 <span class="entando-sm-write">Entando</span></div>
         </div>
