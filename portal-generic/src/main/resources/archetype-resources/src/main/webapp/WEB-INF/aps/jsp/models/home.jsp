@@ -1,59 +1,56 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en-us" class="login-pf">
+<!DOCTYPE html>
+<html lang="<wp:info key="currentLang" />">
     <head>
         <title>Entando - Welcome</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charset="utf-8" />
         <link rel="shortcut icon" href="<wp:resourceURL />administration/img/favicon-entando.png">
-        <jsp:include page="/WEB-INF/apsadmin/jsp/common/inc/header-include.jsp" />
+
+        <!--CSS inclusions-->
+        <link rel="stylesheet" href="<wp:resourceURL />administration/bootstrap/css/bootstrap.min.css" media="screen" />
+        <link rel="stylesheet" href="<wp:resourceURL />administration/css/entando-admin-console-default-theme.css">
+        <!--JS inclusions-->
+        <script src="<wp:resourceURL />administration/js/jquery-2.2.4.min.js"></script>
+        <script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.min.js"></script>
     </head>
-    <body>
-        <div>
-            <span id="badge">
+    <body id="background-full-landing">
+
+        <div class="container center-pos" >
+            <div class="logo-entando-top">
                 <img class="logo-entando-login" src="<wp:resourceURL />administration/img/entando-logo.svg" />
-            </span>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div id="brand">
-                            <p class="ux_brand"><strong>ENTANDO &nbsp;</strong>version <wp:info key="systemParam" paramName="version" /> successfully installed.</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-7 col-md-6 col-lg-5 login">
-                        <p>
-                            If you can see this page, then the people who own this host have just installed <strong>Entando</strong> successfully.<br/>
-                            They now have to replace this placeholder page or just its contents.
-                        </p>
-                        <p>
-                            You can go to the login form
-                            and use the following to enter in the Administration Area.
-                        </p>
-                        <div class="form-group">
-                            <div class="col-xs-8 col-sm-8 col-md-8">
-                                <p class="entando-installed">
-                                    Username: <strong>admin</strong><br>
-                                        Password: <strong>adminadmin</strong>
-                                </p>
-                            </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4 submit">     
-                                <div class="blank-slate-pf-main-action">
-                                    <a href="<wp:info key="systemParam" paramName="applicationBaseURL" />do/login.action" class="btn btn-primary btn-lg">Go to log in page</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-5 col-md-6 col-lg-7 details">
-                        <h3 class="entando-installed-right-side">Useful links:</h3><br>
-                        <ul>
-                            <li><a href="http://www.entando.com">Home of the <strong>Entando</strong> project</a></li>
-                            <li><a href="http://github.com/entando/">Source code and online docs at GitHub</a></li>
-                            <li><a href="http://sourceforge.net/projects/japs"><strong>Entando</strong> at SourceForge</a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
+            <div class="ux_brand_subtitle-lp">THE ENTANDO <wp:info key="systemParam" paramName="version" /></div>
+            <div class="ux_brand-lp">HAS BEEN SUCCESSFULLY INSTALLED</div>
+            <div class="spacer-login-lp"></div>
+
+            <div class="entando-intro">
+                If you can see this page, then the people who own this host have just installed <strong>Entando</strong> successfully.<br/>
+                They now have to replace this placeholder page or just its contents.
+            </div>
+            <div class="spacer-landing"></div>
+            <div class="entando-intro">
+                You can go to the login form and use the following credentials to Enter the Administration Area
+            </div>
+
+            <div class="entando-intro">
+                Username: <strong>admin</strong> <br /> Password: <strong>adminadmin</strong>
+            </div>
+
+            <div class="login-buttons-lp">
+                <a href="<wp:info key="systemParam" paramName="applicationBaseURL" />do/login" class="btn btn-login">
+                    GO TO LOG IN PAGE
+                </a>
+            </div>
+
+            <div id="social-link">
+                <a href="http://www.entando.com" target="_blank"><img src="<wp:resourceURL />administration/img/entando_icon.png"></a>
+                <a href="http://github.com/entando/" target="_blank"><img src="<wp:resourceURL />administration/img/github.png"></a>
+                <a href="https://twitter.com/entando" target="_blank"><img src="<wp:resourceURL />administration/img/twitter.png"></a>
+            </div>
+        </div>
+        <div id="bottom-footer">
+            <div class="copyright-entando">Copyright 2017 <span class="entando-sm-write">Entando</span></div>
         </div>
     </body>
 </html>
