@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="<wp:info key="currentLang" />">
     <head>
-        <title>Entando - Log in</title>
+        <title>Entando - Welcome</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charset="utf-8" />
         <link rel="shortcut icon" href="<wp:resourceURL />administration/img/favicon-entando.png">
