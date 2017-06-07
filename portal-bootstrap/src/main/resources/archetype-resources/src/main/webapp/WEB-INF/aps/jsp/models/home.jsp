@@ -1,92 +1,60 @@
 <%@ taglib prefix="wp" uri="/aps-core" %>
 <!DOCTYPE html>
 <html lang="<wp:info key="currentLang" />">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <title>Entando - Log in</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" href="<wp:resourceURL />administration/img/favicon-entando.png">
 
-		<title>
-			<wp:currentPage param="title" /> - Entando
-		</title>
-		<link rel="icon" href="<wp:info key="systemParam" paramName="applicationBaseURL" />favicon.png" type="image/png" />
+        <!--CSS inclusions-->
+        <link rel="stylesheet" href="<wp:resourceURL />administration/bootstrap/css/bootstrap.min.css" media="screen" />
+        <link rel="stylesheet" href="<wp:resourceURL />administration/css/entando-admin-console-default-theme.css">
+        <!--JS inclusions-->
+        <script src="<wp:resourceURL />administration/js/jquery-2.2.4.min.js"></script>
+        <script src="<wp:resourceURL />administration/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body id="background-full-landing">
 
-		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-		<!--[if lt IE 9]>
-			<script src="<wp:resourceURL />static/js/entando-misc-html5-essentials/html5shiv.js"></script>
-		<![endif]-->
+        <div class="container center-pos" >
+            <div class="logo-entando-top">
+                <img class="logo-entando-login" src="<wp:resourceURL />administration/img/entando-logo.svg" />
+            </div>
+            <div class="ux_brand_subtitle-lp">THE ENTANDO <wp:info key="systemParam" paramName="version" /></div>
+            <div class="ux_brand-lp">HAS BEEN SUCCESSFULLY INSTALLED</div>
+            <div class="spacer-login-lp"></div>
 
-		<jsp:include page="inc/lesscss-active/lesscss.jsp" />
-		<jsp:include page="inc/models-common-utils.jsp" />
+            <div class="entando-intro">
+                If you can see this page, then the people who own this host have just installed <strong>Entando</strong> successfully.<br/>
+                They now have to replace this placeholder page or just its contents.
+            </div>
 
-	</head>
-	<body>
+            <div class="spacer-landing"></div>
 
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a class="brand" href="#"><img src="<wp:imgURL />entando-logo.png" alt="Entando - Access. Build. Connect." /></a>
-				<ul class="nav">
-					<li><a href="http://www.entando.com">Home of Entando</a></li>
-					<li class="divider-vertical"></li>
-					<li><a href="http://github.com/entando/">Source code and online docs at GitHub</a></li>
-					<li class="divider-vertical"></li>
-					<li><a href="http://sourceforge.net/projects/japs">Entando at SourceForge</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+            <div class="entando-intro">
+                You can go to the login form and use the following credentials to Enter the Administration Area
+            </div>
 
-	<div class="container">
+            <div class="entando-intro">
+                Username: <strong>admin</strong> <br /> Password: <strong>adminadmin</strong>
+            </div>
 
-	<!-- START WELCOME -->
-	<h1>It Worked!<br /> <strong>Entando</strong> is installed on this host.</h1>
-	<h2 class="lead">Version <wp:info key="systemParam" paramName="version" /></h2>
+            <div class="login-buttons-lp">
+                <a href="<wp:info key="systemParam" paramName="applicationBaseURL" />do/login" class="btn btn-login">
+                    GO TO LOG IN PAGE
+                </a>
+            </div>
 
-	<p>
-		If you can see this page, then the people who own this host have just installed <strong>Entando</strong> successfully.<br/>
-		They now have to replace this placeholder page or just its contents.
-	</p>
+            <div id="social-link">
+                <a id="lol" href="http://www.entando.com" target="_blank"><img src="<wp:resourceURL />administration/img/entando_icon.png"></a>
+                <a href="http://github.com/entando/" target="_blank"><img src="<wp:resourceURL />administration/img/github.png"></a>
+                <a href="http://twitter.net/projects/japs" target="_blank"><img src="<wp:resourceURL />administration/img/twitter.png"></a>
+            </div>
 
-	<div class="row">
+        </div>
 
-		<div class="well span7 text-center margin-medium-vertical">
-
-			<h2>Access to the Administration Area</h2>
-
-			<p>
-				The built-in administrator user is <strong>admin</strong>:
-			</p>
-
-			<p class="margin-medium-vertical">
-				<a href="<wp:info key="systemParam" paramName="applicationBaseURL" />do/doLogin.action?username=admin&amp;password=adminadmin&amp;backend_client_gui=advanced" class="btn btn-primary btn-large"><i class="icon-user icon-white"></i>&#32;Enter as admin</a>
-			</p>
-
-			<p>
-				The following are its credentials:<br />
-				Username: <strong>admin</strong> / Password: <strong>adminadmin</strong>
-			</p>
-
-		</div>
-
-	</div>
-
-	<div class="row">
-
-		<p class="well span7 text-center margin-medium-bottom">
-			Also, you don't likely want to miss the guide which could help you<br />
-			<a class="btn btn-success" href="https://github.com/entando/Entando/wiki/Entando%3A-an-unexpected-journey"><i class="icon-file icon-white"></i>&#32;Getting started with your own portal</a>
-		</p>
-
-	</div>
-
-	<p>
-	Have a good time with <strong>Entando</strong>!<br />
-	- The Team -
-	</p>
-
-	<!-- END WELCOME -->
-
-	</div>
-
-  </body>
+        <div id="bottom-footer">
+            <div class="copyright-entando">Copyright 2017 <span class="entando-sm-write">Entando</span></div>
+        </div>
+    </body>
 </html>
