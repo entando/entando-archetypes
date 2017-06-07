@@ -28,9 +28,7 @@
                 If you can see this page, then the people who own this host have just installed <strong>Entando</strong> successfully.<br/>
                 They now have to replace this placeholder page or just its contents.
             </div>
-
             <div class="spacer-landing"></div>
-
             <div class="entando-intro">
                 You can go to the login form and use the following credentials to Enter the Administration Area
             </div>
@@ -46,13 +44,11 @@
             </div>
 
             <div id="social-link">
-                <a id="lol" href="http://www.entando.com" target="_blank"><img src="<wp:resourceURL />administration/img/entando_icon.png"></a>
+                <a href="http://www.entando.com" target="_blank"><img src="<wp:resourceURL />administration/img/entando_icon.png"></a>
                 <a href="http://github.com/entando/" target="_blank"><img src="<wp:resourceURL />administration/img/github.png"></a>
-                <a href="http://twitter.net/projects/japs" target="_blank"><img src="<wp:resourceURL />administration/img/twitter.png"></a>
+                <a href="https://twitter.com/entando" target="_blank"><img src="<wp:resourceURL />administration/img/twitter.png"></a>
             </div>
-
         </div>
-
         <div id="bottom-footer">
             <div class="copyright-entando">Copyright 2017 <span class="entando-sm-write">Entando</span></div>
         </div>
