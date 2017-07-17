@@ -56,6 +56,11 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet>
+        <servlet-name>PreviewControllerServlet</servlet-name>
+        <servlet-class>org.entando.entando.aps.servlet.PreviewControllerServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
         <servlet-name>ResourceControllerServlet</servlet-name>
         <servlet-class>org.entando.entando.aps.servlet.ProtectedResourceWardenServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
@@ -93,6 +98,10 @@
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/pages/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PreviewControllerServlet</servlet-name>
+        <url-pattern>/preview/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Struts2ExtServlet</servlet-name>
