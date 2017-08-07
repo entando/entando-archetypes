@@ -1,5 +1,4 @@
 <%@ taglib uri="/aps-core" prefix="wp" %>
-<%@ taglib uri="/jpkiebpm-aps-core" prefix="jpkie" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script src="<wp:resourceURL />administration/js/jquery-2.2.4.min.js"></script>
