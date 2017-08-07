@@ -1,0 +1,435 @@
+<project>
+	<description>Tasks file</description>
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  <classpath>
+	    <pathelement location="${ant-contrib.jar.path}"/>
+	  </classpath>
+	</taskdef>
+
+	<!-- Clean build area -->
+	<target name="clean" description="Clean the project">
+		<echo message="========================================================================" />
+		<echo message=".:[Maven] :: Cleaning the project..." />
+		<echo message="========================================================================" />
+		<exec executable="mvn" dir="${basedir}">
+			<arg value="clean"/>
+		</exec>
+	</target>
+
+	<!-- Init build area -->
+	<target name="init" depends="clean" description="Initialize the project">
+		<echo message="========================================================================" />
+		<echo message=".:[Maven] :: Initializing the project..." />
+		<echo message="========================================================================" />
+		<exec executable="mvn" dir="${basedir}">
+			<arg value="validate"/>
+			<arg value="generate-test-resources"/>
+		</exec>
+	</target>
+
+	<target name="compile" depends="clean" description="Compile the source ">
+		<echo message="========================================================================" />
+		<echo message=".:[Maven] :: Compiling the sources..." />
+		<echo message="========================================================================" />
+		<exec executable="mvn" dir="${basedir}">
+			<arg value="compile"/>
+			<arg value="test-compile"/>
+		</exec>
+	</target>
+
+	<target name="WAR-build" depends="clean" description="Build the WAR">
+		<echo message="========================================================================" />
+		<echo message=".:[Maven] :: Packaging the WAR..." />
+		<echo message="========================================================================" />
+		<exec executable="mvn" dir="${basedir}">
+			<env key="MAVEN_WORKING_MODE" value="production"/>
+			<arg line="-P !development-windows"/>
+			<arg value="package"/>
+			<arg line="-DskipTests"/>
+		</exec>
+	</target>
+	
+	<!-- Added for jboss -->
+	<target name="WAR-build-jboss" depends="clean" description="Build the WAR for JBOSS">
+		<echo message="========================================================================" />
+		<echo message=".:[Maven] :: Packaging the Jboss WAR..." />
+		<echo message="========================================================================" />
+		<exec executable="mvn" dir="${basedir}">
+			<env key="MAVEN_WORKING_MODE" value="production-jboss"/>
+			<arg line="-P !development-windows"/>
+			<arg value="package"/>
+			<arg line="-DskipTests"/>
+		</exec>
+	</target>
+
+	<target name="WAR-build-standalone" depends="clean" description="Build the standalone executable WAR">
+		<echo message="========================================================================" />
+		<echo message=".:[Maven] :: Packaging the standalone executable WAR..." />
+		<echo message="========================================================================" />
+		<exec executable="mvn" dir="${basedir}">
+			<env key="MAVEN_WORKING_MODE" value="standalone"/>
+			<arg line="-P !development-windows"/>
+			<arg value="package"/>
+			<arg line="-DskipTests"/>
+			<arg line="-DskipDerby=false"/>
+			<arg line="-DskipStandalone=false"/>
+		</exec>
+		<move todir="${dist.path}/standalone">
+			<fileset dir="${dist.path}">
+				<include name="${webappname}*war-exec*.jar"/>
+			</fileset>
+		</move>
+	</target>
+
+	<target name="WAR-undeploy">
+		<delete file="${tomcat.deploy.path}/${webappname}.war" />
+	</target>
+
+	<!-- deploy the distribution -->
+	<target name="WAR-deploy" description="Copy the WAR to Tomcat">
+		<copy file="${dist.path}/${webappname}.war" todir="${tomcat.deploy.path}" />
+	</target>
+
+	<target name="PG-db-backup-tar" description="PostgreSQL db backup in TAR format">
+		<echo message="Dumping ${webappname}${test.marker}Port...." />
+		<exec executable="${postgres.bin.path}/${postgres.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/tar">
+			<env key="PGPASSWORD" value="${postgres.password}"/>
+			<arg value="-i"/>
+			<arg line="-h ${postgres.hostname}"/>
+			<arg line="-p ${postgres.port}"/>
+			<arg line="-U ${postgres.username}"/>
+			<arg line="-F t"/>
+			<arg value="-b"/>
+			<arg value="-v"/>
+			<arg line="-f ${webappname}${test.marker}Port.backup"/>
+			<arg value="${webappname}${test.marker}Port"/>
+		</exec>
+		<echo message="${webappname}${test.marker}Port dumped. Compressing...." />
+		<bzip2 destfile="${basedir}/src/${project.src.branch}/db/tar/${webappname}${test.marker}Port.backup.bz2">
+			<fileset dir="${basedir}/src/${project.src.branch}/db/tar">
+				<include name="${webappname}${test.marker}Port.backup"/>
+			</fileset>
+		</bzip2>
+		<delete file="${basedir}/src/${project.src.branch}/db/tar/${webappname}${test.marker}Port.backup" />
+
+		<echo message="Dumping ${webappname}${test.marker}Serv...." />
+		<exec executable="${postgres.bin.path}/${postgres.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/tar">
+			<env key="PGPASSWORD" value="${postgres.password}"/>
+			<arg value="-i"/>
+			<arg line="-h ${postgres.hostname}"/>
+			<arg line="-p ${postgres.port}"/>
+			<arg line="-U ${postgres.username}"/>
+			<arg line="-F t"/>
+			<arg value="-b"/>
+			<arg value="-v"/>
+			<arg line="-f ${webappname}${test.marker}Serv.backup"/>
+			<arg value="${webappname}${test.marker}Serv"/>
+		</exec>
+		<echo message="${webappname}${test.marker}Serv dumped. Compressing...." />
+		<bzip2 destfile="${basedir}/src/${project.src.branch}/db/tar/${webappname}${test.marker}Serv.backup.bz2" >
+			<fileset dir="${basedir}/src/${project.src.branch}/db/tar">
+				<include name="${webappname}${test.marker}Serv.backup"/>
+			</fileset>
+		</bzip2>
+		<delete file="${basedir}/src/${project.src.branch}/db/tar/${webappname}${test.marker}Serv.backup" />
+	</target>
+
+	<target name="PG-db-export-SQL">
+		<echo message="Dumping ${webappname}${test.marker}Port...." />
+		<exec executable="${postgres.bin.path}/${postgres.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/export">
+			<env key="PGPASSWORD" value="${postgres.password}"/>
+			<arg value="-i"/>
+			<arg line="-h ${postgres.hostname}"/>
+			<arg line="-p ${postgres.port}"/>
+			<arg line="-U ${postgres.username}"/>
+			<arg line="-F p"/>
+			<arg value="-s"/>
+			<arg value="-O"/>
+			<arg value="-v"/>
+			<arg line="-f ${webappname}${test.marker}Port_schema.sql"/>
+			<arg value="${webappname}${test.marker}Port"/>
+		</exec>
+		<echo message="Dumping ${webappname}${test.marker}Serv...." />
+		<exec executable="${postgres.bin.path}/${postgres.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/export">
+			<env key="PGPASSWORD" value="${postgres.password}"/>
+			<arg value="-i"/>
+			<arg line="-h ${postgres.hostname}"/>
+			<arg line="-p ${postgres.port}"/>
+			<arg line="-U ${postgres.username}"/>
+			<arg line="-F p"/>
+			<arg value="-s"/>
+			<arg value="-O"/>
+			<arg value="-v"/>
+			<arg line="-f ${webappname}${test.marker}Serv_schema.sql"/>
+			<arg value="${webappname}${test.marker}Serv"/>
+		</exec>
+		<echo message="Dumping ${webappname}${test.marker}Port...." />
+		<exec executable="${postgres.bin.path}/${postgres.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/export">
+			<env key="PGPASSWORD" value="${postgres.password}"/>
+			<arg value="-i"/>
+			<arg line="-h ${postgres.hostname}"/>
+			<arg line="-p ${postgres.port}"/>
+			<arg line="-U ${postgres.username}"/>
+			<arg line="-F p"/>
+			<arg line="-a"/>
+			<arg line="-D" />
+			<arg line="-v" />
+			<arg line="-f ${webappname}${test.marker}Port_data.sql"/>
+			<arg value="${webappname}${test.marker}Port"/>
+		</exec>
+		<echo message="Dumping ${webappname}${test.marker}Serv...." />
+		<exec executable="${postgres.bin.path}/${postgres.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/export">
+			<env key="PGPASSWORD" value="${postgres.password}"/>
+			<arg value="-i"/>
+			<arg line="-h ${postgres.hostname}"/>
+			<arg line="-p ${postgres.port}"/>
+			<arg line="-U ${postgres.username}"/>
+			<arg line="-F p"/>
+			<arg line="-a"/>
+			<arg line="-D" />
+			<arg line="-v" />
+			<arg line="-f ${webappname}${test.marker}Serv_data.sql"/>
+			<arg value="${webappname}${test.marker}Serv"/>
+		</exec>
+		<echo message="Database full backup in plain version done."/>
+	</target>
+
+	<target name="PG-db-restore-tar">
+		<echo message="Uncompressing ${webappname}${test.marker}Port...." />
+		<bunzip2 src="${basedir}/src/${project.src.branch}/db/tar/${webappname}${test.marker}Port.backup.bz2" />
+
+		<echo message="Restoring ${webappname}${test.marker}Port...." />
+		<exec executable="${postgres.bin.path}/${postgres.bin.restore}" dir="${basedir}/src/${project.src.branch}/db/tar">
+			<env key="PGPASSWORD" value="${postgres.password}"/>
+			<arg value="-i"/>
+			<arg line="-h ${postgres.hostname}"/>
+			<arg line="-p ${postgres.port}"/>
+			<arg line="-U ${postgres.username}"/>
+			<arg line="-d ${webappname}${test.marker}Port"/>
+			<arg value="${webappname}${test.marker}Port.backup"/>
+		</exec>
+		<delete file="${basedir}/src/${project.src.branch}/db/tar/${webappname}${test.marker}Port.backup" />
+
+		<echo message="Uncompressing ${webappname}${test.marker}Serv...." />
+		<bunzip2 src="${basedir}/src/${project.src.branch}/db/tar/${webappname}${test.marker}Serv.backup.bz2" />
+
+		<echo message="Restoring ${webappname}${test.marker}Serv...." />
+		<exec executable="${postgres.bin.path}/${postgres.bin.restore}" dir="${basedir}/src/${project.src.branch}/db/tar">
+			<env key="PGPASSWORD" value="${postgres.password}"/>
+			<arg value="-i"/>
+			<arg line="-h ${postgres.hostname}"/>
+			<arg line="-p ${postgres.port}"/>
+			<arg line="-U ${postgres.username}"/>
+			<arg line="-d ${webappname}${test.marker}Serv"/>
+			<arg value="${webappname}${test.marker}Serv.backup"/>
+		</exec>
+		<delete file="${basedir}/src/${project.src.branch}/db/tar/${webappname}${test.marker}Serv.backup" />
+	</target>
+
+	<target name="PG-db-full-update-tar" description="PostgreSQL db update from tar file" depends="PG-db-drop, PG-db-create, PG-db-restore-tar">
+		<echo message="Databases full update [done]" />
+	</target>
+
+	<target name="PG-db-drop">
+		<echo message="Dropping ${webappname}${test.marker}Port...." />
+		<exec executable="${postgres.bin.path}/${postgres.bin.drop}">
+			<env key="PGPASSWORD" value="${postgres.password}"/>
+			<arg line="-h ${postgres.hostname}"/>
+			<arg line="-p ${postgres.port}"/>
+			<arg line="-U ${postgres.username}"/>
+			<arg value="${webappname}${test.marker}Port"/>
+		</exec>
+		<echo message="Dropping ${webappname}${test.marker}Serv...." />
+		<exec executable="${postgres.bin.path}/${postgres.bin.drop}">
+			<env key="PGPASSWORD" value="${postgres.password}"/>
+			<arg line="-h ${postgres.hostname}"/>
+			<arg line="-p ${postgres.port}"/>
+			<arg line="-U ${postgres.username}"/>
+			<arg value="${webappname}${test.marker}Serv"/>
+		</exec>
+	</target>
+
+	<target name="PG-db-create">
+		<echo message="Creating ${webappname}${test.marker}Port...." />
+		<exec executable="${postgres.bin.path}/${postgres.bin.create}">
+			<env key="PGPASSWORD" value="${postgres.password}"/>
+			<arg line="-E UTF-8"/>
+			<arg line="-O ${postgres.username}"/>
+			<arg value="-e"/>
+			<arg line="-h ${postgres.hostname}"/>
+			<arg line="-p ${postgres.port}"/>
+			<arg line="-U ${postgres.username}"/>
+			<arg value="${webappname}${test.marker}Port"/>
+		</exec>
+		<echo message="Creating ${webappname}${test.marker}Serv...." />
+		<exec executable="${postgres.bin.path}/${postgres.bin.create}">
+			<env key="PGPASSWORD" value="${postgres.password}"/>
+			<arg line="-E UTF-8"/>
+			<arg line="-O ${postgres.username}"/>
+			<arg value="-e"/>
+			<arg line="-h ${postgres.hostname}"/>
+			<arg line="-p ${postgres.port}"/>
+			<arg line="-U ${postgres.username}"/>
+			<arg value="${webappname}${test.marker}Serv"/>
+		</exec>
+	</target>
+
+	<target name="Test-PG-db-init" description="Use it to restore databases for tests - PostgreSQL">
+		<echo message="========================================================================" />
+		<echo message=".:[Ant] :: Updating test DBs only" />
+		<echo message="        :: Using files in: ${basedir}/src/test/db/tar" />
+		<echo message="========================================================================" />
+		<antcall target="PG-db-drop">
+			<param name="test.marker" value="test" />
+			<param name="project.src.branch" value="test" />
+		</antcall>
+		<antcall target="PG-db-create">
+			<param name="test.marker" value="test" />
+			<param name="project.src.branch" value="test" />
+		</antcall>
+	</target>
+
+	<target name="Test-MySQL-db-init" description="Use it to restore databases for tests - MySQL">
+		<echo message="========================================================================" />
+		<echo message=".:[Ant] :: Updating test DBs only" />
+		<echo message="        :: Using files in: ${basedir}/src/test/db/mysql" />
+		<echo message="========================================================================" />
+		<antcall target="MySQL-db-drop">
+			<param name="test.marker" value="test" />
+			<param name="project.src.branch" value="test" />
+		</antcall>
+		<antcall target="MySQL-db-create">
+			<param name="test.marker" value="test" />
+			<param name="project.src.branch" value="test" />
+		</antcall>
+	</target>
+
+	<target name="Test-PG-db-backup" description="Test - PG db backup in TAR format">
+		<antcall target="PG-db-backup">
+			<param name="test.marker" value="test" />
+			<param name="project.src.branch" value="test" />
+		</antcall>
+	</target>
+
+	<target name="Test-PG-db-export-SQL" description="Test - PG db backup in plain SQL">
+		<antcall target="PG-db-export-SQL">
+			<param name="test.marker" value="test" />
+			<param name="project.src.branch" value="test" />
+		</antcall>
+	</target>
+
+	<!-- Generate Site -->
+	<target name="Site" description="Generate the Site">
+		<echo message="========================================================================" />
+		<echo message=".:[Maven] :: Generating the Site..." />
+		<echo message="========================================================================" />
+		<exec executable="mvn" dir="${basedir}">
+			<arg value="site"/>
+		</exec>
+	</target>
+
+	<!-- MySQL -->
+	<target name="MySQL-db-backup" description="MySQL db backup">
+		<echo message="Dumping ${webappname}${test.marker}Port" />
+		<exec executable="${mysql.bin.path}/${mysql.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/mysql/">
+			<arg line=" -h${mysql.hostname}"/>
+			<arg line=" -P${mysql.port}"/>
+			<arg line=" -u${mysql.username}"/>
+			<arg line=" -p${mysql.password}"/>
+			<arg line="--database" />
+			<arg line="--routines" />
+			<arg line="${webappname}${test.marker}Port"/>
+			<arg line="-r"/>
+			<arg path="${basedir}/src/${project.src.branch}/db/mysql/${webappname}${test.marker}Port.sql" />
+		</exec>
+		<echo message="${webappname}${test.marker}Port dumped." />
+		<echo message="Dumping ${webappname}${test.marker}Serv" />
+		<exec executable="${mysql.bin.path}/${mysql.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/mysql/">
+			<arg line=" -h${mysql.hostname}"/>
+			<arg line=" -P${mysql.port}"/>
+			<arg line=" -u${mysql.username}"/>
+			<arg line=" -p${mysql.password}"/>
+			<arg line="--database" />
+			<arg line="--routines" />
+			<arg line="${webappname}${test.marker}Serv"/>
+			<arg line="-r"/>
+			<arg path="${basedir}/src/${project.src.branch}/db/mysql/${webappname}${test.marker}Serv.sql" />
+		</exec>
+		<echo message="${webappname}${test.marker}Serv dumped." />
+	</target>
+
+	<target name="MySQL-db-restore" description="MySQL db restore">
+		<echo message="Restoring ${webappname}${test.marker}Port..." />
+		<exec executable="${mysql.bin.path}/${mysql.bin.restore}" dir="${basedir}/src/${project.src.branch}/db/mysql/">
+			<arg line=" -h${mysql.hostname}"/>
+			<arg line=" -P${mysql.port}"/>
+			<arg line=" -u${mysql.username}"/>
+			<arg line=" -p${mysql.password}"/>
+			<arg line=" -e"/>
+			<arg line=' "source ${basedir}/src/${project.src.branch}/db/mysql/${webappname}${test.marker}Port.sql" '/>
+		</exec>
+		<echo message="...${webappname}${test.marker}Port Restored." />
+		<echo message="Restoring ${webappname}${test.marker}Serv..." />
+		<exec executable="${mysql.bin.path}/${mysql.bin.restore}" dir="${basedir}/src/${project.src.branch}/db/mysql/">
+			<arg line=" -h${mysql.hostname}"/>
+			<arg line=" -P${mysql.port}"/>
+			<arg line=" -u${mysql.username}"/>
+			<arg line=" -p${mysql.password}"/>
+			<arg line=" -e"/>
+			<arg line=' "source ${basedir}/src/${project.src.branch}/db/mysql/${webappname}${test.marker}Serv.sql" '/>
+		</exec>
+		<echo message="...${webappname}${test.marker}Serv Restored." />
+	</target>
+
+	<target name="MySQL-db-drop" description="MySQL db drop">
+		<echo message="Dropping ${webappname}${test.marker}Port..." />
+		<exec executable="${mysql.bin.path}/${mysql.bin.drop}">
+			<arg line=" -h${mysql.hostname}"/>
+			<arg line=" -P${mysql.port}"/>
+			<arg line=" -u${mysql.username}"/>
+			<arg line=" -p${mysql.password}"/>
+			<arg line=" -e"/>
+			<arg line=' "drop database `${webappname}${test.marker}Port`;" '/>
+		</exec>
+		<echo message="... ${webappname}${test.marker}Port dropped." />
+		<echo message="Dropping ${webappname}${test.marker}Serv" />
+		<exec executable="${mysql.bin.path}/${mysql.bin.drop}">
+			<arg line=" -h${mysql.hostname}"/>
+			<arg line=" -P${mysql.port}"/>
+			<arg line=" -u${mysql.username}"/>
+			<arg line=" -p${mysql.password}"/>
+			<arg line=" -e"/>
+			<arg line=' "drop database `${webappname}${test.marker}Serv`;" '/>
+		</exec>
+		<echo message="... ${webappname}${test.marker}Serv dropped." />
+	</target>
+
+	<target name="MySQL-db-create" description="MySQL db create">
+		<echo message="Creating ${webappname}${test.marker}Port..." />
+		<exec executable="${mysql.bin.path}/${mysql.bin.drop}">
+			<arg line=" -h${mysql.hostname}"/>
+			<arg line=" -P${mysql.port}"/>
+			<arg line=" -u${mysql.username}"/>
+			<arg line=" -p${mysql.password}"/>
+			<arg line=" -e"/>
+			<arg line=' "create database `${webappname}${test.marker}Port`;" '/>
+		</exec>
+		<echo message="... ${webappname}${test.marker}Port created" />
+		<echo message="Creating ${webappname}${test.marker}Serv" />
+		<exec executable="${mysql.bin.path}/${mysql.bin.drop}">
+			<arg line=" -h${mysql.hostname}"/>
+			<arg line=" -P${mysql.port}"/>
+			<arg line=" -u${mysql.username}"/>
+			<arg line=" -p${mysql.password}"/>
+			<arg line=" -e"/>
+			<arg line=' "create database `${webappname}${test.marker}Serv`;" '/>
+		</exec>
+		<echo message="... ${webappname}${test.marker}Serv created" />
+	</target>
+
+	<target name="MySQL-db-full-update" description="MySQL db update" depends="MySQL-db-drop, MySQL-db-restore">
+		<echo message="Databases full update [done]" />
+	</target>
+
+</project>
