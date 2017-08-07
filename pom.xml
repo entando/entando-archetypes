@@ -38,6 +38,6 @@
         <module>plugin</module>
         <module>portal-bootstrap</module>
         <module>portal-generic</module>
-        <module>portal-BPM</module>
+        <module>web-app-bpm</module>
     </modules>
 </project>
