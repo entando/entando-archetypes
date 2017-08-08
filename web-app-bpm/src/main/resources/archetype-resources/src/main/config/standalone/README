@@ -1,0 +1,8 @@
+This version of Entando standalone portal is tested under Ubuntu Linux, Mac and Windows.
+To run the standalone version of this portal you have to launch 
+
+startStandalone.sh		(Unix and Mac)
+startStandalone.bat		(Windows)
+
+Then open your browser and go to:
+http://localhost:8080/${profile.application.name}/
