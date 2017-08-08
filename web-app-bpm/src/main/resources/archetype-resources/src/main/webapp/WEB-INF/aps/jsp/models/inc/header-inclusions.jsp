@@ -19,3 +19,4 @@
 <script src="<wp:resourceURL />static/js/inspinia.js"></script>
 <script src="<wp:resourceURL />static/js/pace.min.js"></script>
 <script src="<wp:resourceURL />static/js/jquery.slimscroll.min.js"></script>
+<script src="<wp:resourceURL />static/js/jquery.metisMenu.js"></script>
