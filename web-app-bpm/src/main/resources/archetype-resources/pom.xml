@@ -638,42 +638,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--			<plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>2.6</version>
-                    <configuration>
-                            <packagingExcludes>WEB-INF/classes/**/*.tld,resources/static/entando-misc-bootstrap/**</packagingExcludes>
-                            <webResources>
-                                    <resource>
-                                            <directory>${project.build.directory}/entando-misc-bootstrap/resources/static/entando-misc-bootstrap/bootstrap</directory>
-                                            <targetPath>resources/static</targetPath>
-                                            <includes>
-                                                    <include>bootstrap/**</include>
-                                            </includes>
-                                    </resource>
-                            </webResources>
-                    </configuration>
-            </plugin>-->
-            <!--			<plugin>
-                    <groupId>org.lesscss</groupId>
-                    <artifactId>lesscss-maven-plugin</artifactId>
-                    <version>1.3.0</version>
-                    <configuration>
-                            <sourceDirectory>${project.basedir}/src/main/webapp/resources/static/less</sourceDirectory>
-                            <outputDirectory>${project.build.directory}/${project.build.finalName}/resources/static/css</outputDirectory>
-                            <compress>true</compress>
-                    </configuration>
-                    <executions>
-                            <execution>
-                                    <id>build-lesscss-files</id>
-                                    <phase>prepare-package</phase>
-                                    <goals>
-                                            <goal>compile</goal>
-                                    </goals>
-                            </execution>
-                    </executions>
-            </plugin>-->
         </plugins>
         <pluginManagement>
             <plugins>
@@ -770,31 +734,6 @@
         </pluginManagement>
     </build>
     <dependencies>
-        <!--		<dependency>
-                <groupId>org.entando.entando.bundles.misc</groupId>
-                <artifactId>entando-misc-less</artifactId>
-                <version>${entando.version}</version>
-                <type>war</type>
-        </dependency>-->
-        <!--		<dependency>
-                <groupId>org.entando.entando.bundles.misc</groupId>
-                <artifactId>entando-misc-bootstrap</artifactId>
-                <version>${entando.version}</version>
-                <type>war</type>
-                <scope>provided</scope>
-        </dependency>-->
-        <!--        <dependency>
-            <groupId>org.entando.entando.bundles.pages</groupId>
-            <artifactId>entando-page-bootstrap-hero</artifactId>
-            <version>${entando.version}</version>
-            <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>org.entando.entando.bundles.pages</groupId>
-            <artifactId>entando-page-2columns-left</artifactId>
-            <version>${entando.version}</version>
-            <type>war</type>
-        </dependency>-->
         <dependency>
             <groupId>org.entando.entando.bundles.pages</groupId>
             <artifactId>entando-page-inspinia</artifactId>
@@ -905,6 +844,12 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.entando.entando.plugins</groupId>
+            <artifactId>entando-plugin-jpkiebpm</artifactId>
+            <version>${entando.version}</version>
+            <type>war</type>
         </dependency>
     </dependencies>
 </project>
