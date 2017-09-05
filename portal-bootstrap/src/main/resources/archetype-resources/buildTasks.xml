@@ -95,7 +95,6 @@
 		<echo message="Dumping ${webappname}${test.marker}Port...." />
 		<exec executable="${postgres.bin.path}/${postgres.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/tar">
 			<env key="PGPASSWORD" value="${postgres.password}"/>
-			<arg value="-i"/>
 			<arg line="-h ${postgres.hostname}"/>
 			<arg line="-p ${postgres.port}"/>
 			<arg line="-U ${postgres.username}"/>
@@ -116,7 +115,6 @@
 		<echo message="Dumping ${webappname}${test.marker}Serv...." />
 		<exec executable="${postgres.bin.path}/${postgres.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/tar">
 			<env key="PGPASSWORD" value="${postgres.password}"/>
-			<arg value="-i"/>
 			<arg line="-h ${postgres.hostname}"/>
 			<arg line="-p ${postgres.port}"/>
 			<arg line="-U ${postgres.username}"/>
@@ -139,7 +137,6 @@
 		<echo message="Dumping ${webappname}${test.marker}Port...." />
 		<exec executable="${postgres.bin.path}/${postgres.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/export">
 			<env key="PGPASSWORD" value="${postgres.password}"/>
-			<arg value="-i"/>
 			<arg line="-h ${postgres.hostname}"/>
 			<arg line="-p ${postgres.port}"/>
 			<arg line="-U ${postgres.username}"/>
@@ -153,7 +150,6 @@
 		<echo message="Dumping ${webappname}${test.marker}Serv...." />
 		<exec executable="${postgres.bin.path}/${postgres.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/export">
 			<env key="PGPASSWORD" value="${postgres.password}"/>
-			<arg value="-i"/>
 			<arg line="-h ${postgres.hostname}"/>
 			<arg line="-p ${postgres.port}"/>
 			<arg line="-U ${postgres.username}"/>
@@ -167,7 +163,6 @@
 		<echo message="Dumping ${webappname}${test.marker}Port...." />
 		<exec executable="${postgres.bin.path}/${postgres.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/export">
 			<env key="PGPASSWORD" value="${postgres.password}"/>
-			<arg value="-i"/>
 			<arg line="-h ${postgres.hostname}"/>
 			<arg line="-p ${postgres.port}"/>
 			<arg line="-U ${postgres.username}"/>
@@ -181,7 +176,6 @@
 		<echo message="Dumping ${webappname}${test.marker}Serv...." />
 		<exec executable="${postgres.bin.path}/${postgres.bin.dump}" dir="${basedir}/src/${project.src.branch}/db/export">
 			<env key="PGPASSWORD" value="${postgres.password}"/>
-			<arg value="-i"/>
 			<arg line="-h ${postgres.hostname}"/>
 			<arg line="-p ${postgres.port}"/>
 			<arg line="-U ${postgres.username}"/>
@@ -202,7 +196,6 @@
 		<echo message="Restoring ${webappname}${test.marker}Port...." />
 		<exec executable="${postgres.bin.path}/${postgres.bin.restore}" dir="${basedir}/src/${project.src.branch}/db/tar">
 			<env key="PGPASSWORD" value="${postgres.password}"/>
-			<arg value="-i"/>
 			<arg line="-h ${postgres.hostname}"/>
 			<arg line="-p ${postgres.port}"/>
 			<arg line="-U ${postgres.username}"/>
@@ -217,7 +210,6 @@
 		<echo message="Restoring ${webappname}${test.marker}Serv...." />
 		<exec executable="${postgres.bin.path}/${postgres.bin.restore}" dir="${basedir}/src/${project.src.branch}/db/tar">
 			<env key="PGPASSWORD" value="${postgres.password}"/>
-			<arg value="-i"/>
 			<arg line="-h ${postgres.hostname}"/>
 			<arg line="-p ${postgres.port}"/>
 			<arg line="-U ${postgres.username}"/>
