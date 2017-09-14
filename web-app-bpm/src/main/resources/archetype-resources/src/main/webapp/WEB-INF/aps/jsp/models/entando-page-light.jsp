@@ -201,7 +201,3 @@
         <script src="<wp:resourceURL />static/js/jquery.app.js"></script>
     </body>
 </html>
-
-
-
-
