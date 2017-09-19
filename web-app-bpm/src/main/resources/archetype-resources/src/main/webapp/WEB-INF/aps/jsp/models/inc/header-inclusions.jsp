@@ -4,7 +4,7 @@
     Author     : kusakkuma
 --%>
 
-<%@ taglib prefix="wp" uri="/aps-core"%>
+<%@ taglib prefix="wp" uri="/aps-core" %>
 
 <link rel="stylesheet" href="<wp:resourceURL />static/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<wp:resourceURL />static/css/style.css" rel="stylesheet">
@@ -17,3 +17,4 @@
 <script src="<wp:resourceURL />static/js/pace.min.js"></script>
 <script src="<wp:resourceURL />static/js/jquery.slimscroll.min.js"></script>
 <script src="<wp:resourceURL />static/js/jquery.metisMenu.js"></script>
+<script src="<wp:resourceURL />static/js/Chart.min.js"></script>
