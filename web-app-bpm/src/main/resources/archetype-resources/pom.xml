@@ -67,7 +67,7 @@
                 <env.db.environment>develop</env.db.environment>
             </properties>
         </profile>
-		
+
         <!-- Added for jboss -->
         <profile>
             <id>production-jboss</id>
@@ -83,7 +83,7 @@
                 <jboss>jboss</jboss>
             </properties>
         </profile>
-		
+
     </profiles>
     <properties>
         <!--
@@ -407,7 +407,7 @@
                             </resources>
                         </configuration>
                     </execution>
-					
+
                     <execution>
                         <id>copy-resources-jettycontextxml</id>
                         <phase>validate</phase>
@@ -467,7 +467,7 @@
                     </execution>
                     <!--					<execution>
                             <id>lesscss-include-in-pagemodels</id>
-                             here the phase you need 
+                             here the phase you need
                             <phase>process-resources</phase>
                             <goals>
                                     <goal>copy-resources</goal>
@@ -747,6 +747,12 @@
             <type>war</type>
         </dependency>
         <dependency>
+            <groupId>org.entando.entando.bundles.pages</groupId>
+            <artifactId>entando-page-purple</artifactId>
+            <version>${entando.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
             <groupId>org.entando.entando</groupId>
             <artifactId>entando-engine</artifactId>
             <version>${entando.version}</version>
@@ -760,7 +766,7 @@
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
-		
+
         <dependency>
             <groupId>org.entando.entando</groupId>
             <artifactId>entando-admin-console</artifactId>
@@ -781,7 +787,7 @@
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
-		
+
         <dependency>
             <groupId>org.entando.entando</groupId>
             <artifactId>entando-portal-ui</artifactId>
@@ -802,7 +808,7 @@
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
-		
+
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
