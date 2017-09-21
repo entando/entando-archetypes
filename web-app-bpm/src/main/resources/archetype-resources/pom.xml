@@ -741,18 +741,6 @@
             <type>war</type>
         </dependency>
         <dependency>
-            <groupId>org.entando.entando.bundles.pages</groupId>
-            <artifactId>entando-page-light</artifactId>
-            <version>${entando.version}</version>
-            <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>org.entando.entando.bundles.pages</groupId>
-            <artifactId>entando-page-purple</artifactId>
-            <version>${entando.version}</version>
-            <type>war</type>
-        </dependency>
-        <dependency>
             <groupId>org.entando.entando</groupId>
             <artifactId>entando-engine</artifactId>
             <version>${entando.version}</version>
