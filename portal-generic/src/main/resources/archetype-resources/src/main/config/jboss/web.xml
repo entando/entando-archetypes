@@ -31,6 +31,10 @@
         <filter-name>struts2</filter-name>
         <filter-class>com.agiletec.apsadmin.system.dispatcher.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>XSSFilter</filter-name>
+        <filter-class>org.entando.entando.aps.servlet.XSSFilter</filter-class>
+    </filter>
     <filter-mapping>
         <filter-name>struts2</filter-name>
         <url-pattern>/do/*</url-pattern>
@@ -39,6 +43,18 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>/struts/*</url-pattern>
 	</filter-mapping>
+    <filter-mapping>
+        <filter-name>XSSFilter</filter-name>
+        <url-pattern>*.wp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>XSSFilter</filter-name>
+        <url-pattern>*.page</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>XSSFilter</filter-name>
+        <url-pattern>/pages/*</url-pattern>
+    </filter-mapping>
     <listener>
         <listener-class>org.entando.entando.apsadmin.system.tiles.EntandoStrutsTilesListener</listener-class>
     </listener>
