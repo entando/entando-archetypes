@@ -238,36 +238,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>read-project-properties</goal>
-                        </goals>
-                        <configuration>
-                            <files>
-                                <file>${basedir}/src/main/webapp/WEB-INF/conf/systemParams.properties</file>
-                            </files>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>write</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>write-project-properties</goal>
-                        </goals>
-                        <configuration>
-                            <outputFile>
-                                ${project.build.directory}/${project.artifactId}/WEB-INF/conf/oldkey.properties
-                            </outputFile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
