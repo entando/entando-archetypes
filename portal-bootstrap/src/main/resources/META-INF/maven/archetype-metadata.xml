@@ -114,6 +114,5 @@
                 <include>.gitignore</include>
             </includes>
         </fileSet>
-
     </fileSets>
 </archetype-descriptor>
