@@ -14,7 +14,7 @@ The **Entando archetypes** project includes the following modules:
 * **webapp-generic** is the Maven archetype to build a generic web application based on Entando core components
 * **webapp-app-bpm** is the Maven archetype to build a generic web application based on Inspinia toolkit.
 
-For latest updated news, please visit the company websites: http://www.entando.com.
+For latest updated news, please visit the company websites: https://www.entando.com.
 
 
 Enjoy!
