@@ -856,5 +856,11 @@
 			<version>3.1.0</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+            <groupId>org.entando.entando.plugins</groupId>
+            <artifactId>entando-plugin-jpinfinispan</artifactId>
+            <version>${entando.version}</version>
+            <type>war</type>
+        </dependency>
 	</dependencies>
 </project>
