@@ -20,6 +20,9 @@
 		<local-cache name="Entando_CategoryManager">
 			<eviction strategy="LIRS" max-entries="10000" />
 		</local-cache>
+		<local-cache name="Entando_ConfigManager">
+			<eviction strategy="LIRS" max-entries="100" />
+		</local-cache>
 	</cache-container>
 	
 </infinispan>
