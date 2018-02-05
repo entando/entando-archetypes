@@ -16,3 +16,6 @@ portal-*/.settings
 plugin/.project
 plugin/.settings/
 
+*.iml
+.iml
+.idea
