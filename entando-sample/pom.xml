@@ -7,10 +7,10 @@
         <version>4.3.2-SNAPSHOT</version>
     </parent>
     <groupId>org.entando.entando</groupId>
-    <artifactId>entando-archetype-web-app-BPM</artifactId>
+    <artifactId>entando-archetype-entando-sample</artifactId>
     <packaging>maven-archetype</packaging>
-    <name>Entando: Archetype for BPM Kie Web application</name>
-    <description>RedHat BPM web application Archetype for Entando: an agile, modern and user-centric open source web app like.</description>
+    <name>Entando: Archetype for Entando sample Web application</name>
+    <description>Entando sample web app Archetype: an agile, modern and user-centric open source web app like platform.</description>
     <url>http://www.entando.com/</url>
     <licenses>
         <license>

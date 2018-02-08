@@ -36,8 +36,8 @@
         <module>bundle-theme</module>
         <module>bundle-widget</module>
         <module>plugin</module>
-        <module>portal-bootstrap</module>
-        <module>portal-generic</module>
+        <module>entando-sample</module>
+        <module>web-app-generic</module>
         <module>web-app-bpm</module>
     </modules>
 </project>
