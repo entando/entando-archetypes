@@ -75,18 +75,14 @@
 	<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
 	<load-on-startup>1</load-on-startup>
   </servlet>
-  <servlet>
-    <servlet-name>RequestTokenServlet</servlet-name>
-    <servlet-class>org.entando.entando.aps.servlet.RequestTokenOAuthServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>AuthorizationServlet</servlet-name>
-    <servlet-class>org.entando.entando.aps.servlet.AuthorizationOAuthServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>AccessTokenServlet</servlet-name>
-    <servlet-class>org.entando.entando.aps.servlet.AccessTokenOAuthServlet</servlet-class>
-  </servlet>
+    <servlet>
+        <servlet-name>AuthorizationServlet</servlet-name>
+        <servlet-class>org.entando.entando.aps.servlet.AuthEndpointServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AccessTokenServlet</servlet-name>
+        <servlet-class>org.entando.entando.aps.servlet.TokenEndpointServlet</servlet-class>
+    </servlet>
   <servlet-mapping>
     <servlet-name>ControllerServlet</servlet-name>
     <url-pattern>*.wp</url-pattern>
@@ -115,18 +111,14 @@
 	<servlet-name>APIServlet</servlet-name>
 	<url-pattern>/api/*</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-	<servlet-name>RequestTokenServlet</servlet-name>
-	<url-pattern>/OAuth/request_token</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-	<servlet-name>AuthorizationServlet</servlet-name>
-	<url-pattern>/OAuth/authorize</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-	<servlet-name>AccessTokenServlet</servlet-name>
-	<url-pattern>/OAuth/access_token</url-pattern>
-  </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>AuthorizationServlet</servlet-name>
+        <url-pattern>/OAuth2/authorize</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccessTokenServlet</servlet-name>
+        <url-pattern>/OAuth2/access_token</url-pattern>
+    </servlet-mapping>
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
