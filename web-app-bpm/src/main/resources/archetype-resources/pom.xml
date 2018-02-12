@@ -275,6 +275,7 @@
                                     <directory>src/main/config</directory>
                                     <includes>
                                         <include>systemParams.properties</include>
+                                        <include>security.properties</include>
                                     </includes>
                                     <filtering>true</filtering>
                                 </resource>
@@ -296,6 +297,13 @@
                                     <directory>src/main/config/${jboss}</directory>
                                     <includes>
                                         <include>systemParams.properties</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>src/main/config</directory>
+                                    <includes>
+                                        <include>security.properties</include>
                                     </includes>
                                     <filtering>true</filtering>
                                 </resource>
