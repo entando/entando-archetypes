@@ -484,7 +484,7 @@
                             <exportAntProperties>true</exportAntProperties>
                             <target>
                                 <taskdef resource="net/sf/antcontrib/antcontrib.properties"
-                                         classpathref="maven.plugin.classpath" />
+                                                                         classpathref="maven.plugin.classpath" />
                                 <if>
                                     <available file="src/main/webapp/WEB-INF/aps/jsp/internalservlet/api" type="dir" />
                                     <then>
@@ -824,8 +824,8 @@
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -863,6 +863,12 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.entando.entando.plugins</groupId>
+            <artifactId>entando-plugin-jpinfinispan</artifactId>
+            <version>${entando.version}</version>
+            <type>war</type>
         </dependency>
     </dependencies>
 </project>

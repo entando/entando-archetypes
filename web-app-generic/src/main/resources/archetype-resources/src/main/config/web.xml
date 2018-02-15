@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" metadata-complete="false" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         metadata-complete="false" version="3.0">
     <display-name>${profile.application.name} - powered by Entando</display-name>
     <description>${profile.application.name} - powered by Entando</description>
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			classpath:spring/propertyPlaceholder.xml 
-			classpath:spring/restServerConfig.xml 
-			classpath:spring/baseSystemConfig.xml 
-			classpath*:spring/aps/**/**.xml 
-			classpath*:spring/apsadmin/**/**.xml 
-			classpath*:spring/plugins/**/aps/**/**.xml 
-			classpath*:spring/plugins/**/apsadmin/**/**.xml 
-		</param-value>
-	</context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:spring/propertyPlaceholder.xml
+            classpath:spring/restServerConfig.xml
+            classpath:spring/baseSystemConfig.xml
+            classpath*:spring/aps/**/**.xml
+            classpath*:spring/apsadmin/**/**.xml
+            classpath*:spring/plugins/**/aps/**/**.xml
+            classpath*:spring/plugins/**/apsadmin/**/**.xml
+        </param-value>
+    </context-param>
     <context-param>
         <param-name>Struts2Config</param-name>
-        <param-value>struts-default.xml,struts-plugin.xml,struts.xml,entando-struts-plugin.xml,japs-struts-plugin.xml</param-value>
+        <param-value>struts-default.xml,struts-plugin.xml,struts.xml,entando-struts-plugin.xml,japs-struts-plugin.xml
+        </param-value>
     </context-param>
     <context-param>
         <param-name>org.apache.tiles.definition.DefinitionsFactory.DEFINITIONS_CONFIG</param-name>
         <param-value>/WEB-INF/apsadmin/tiles.xml,/WEB-INF/plugins/**/apsadmin/**tiles.xml</param-value>
     </context-param>
-	<context-param>
-		<param-name>contextClass</param-name>
-		<param-value>org.entando.entando.aps.system.XmlWebApplicationContext</param-value>
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.entando.entando.aps.system.XmlWebApplicationContext</param-value>
     </context-param>
     <filter>
         <filter-name>struts2</filter-name>
@@ -38,10 +41,10 @@
         <filter-name>struts2</filter-name>
         <url-pattern>/do/*</url-pattern>
     </filter-mapping>
-	<filter-mapping>
-		<filter-name>struts2</filter-name>
-		<url-pattern>/struts/*</url-pattern>
-	</filter-mapping>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/struts/*</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>XSSFilter</filter-name>
         <url-pattern>*.wp</url-pattern>
@@ -63,9 +66,9 @@
     <listener>
         <listener-class>org.entando.entando.apsadmin.system.resource.EntandoPluginLabelListener</listener-class>
     </listener>
-	<listener>
-		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-	</listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
     <servlet>
         <servlet-name>ControllerServlet</servlet-name>
         <servlet-class>org.entando.entando.aps.servlet.ControllerServlet</servlet-class>
@@ -83,7 +86,8 @@
     </servlet>
     <servlet>
         <servlet-name>Struts2ExtServlet</servlet-name>
-        <servlet-class>org.entando.entando.aps.internalservlet.system.dispatcher.Struts2ServletDispatcher</servlet-class>
+        <servlet-class>org.entando.entando.aps.internalservlet.system.dispatcher.Struts2ServletDispatcher
+        </servlet-class>
     </servlet>
     <servlet>
         <display-name>API Servlet</display-name>

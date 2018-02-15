@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" metadata-complete="false" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         metadata-complete="false" version="3.0">
     <display-name>${profile.application.name} - powered by Entando</display-name>
     <description>${profile.application.name} - powered by Entando</description>
     <context-param>
@@ -17,7 +19,8 @@
     </context-param>
     <context-param>
         <param-name>Struts2Config</param-name>
-        <param-value>struts-default.xml,struts-plugin.xml,struts.xml,entando-struts-plugin.xml,japs-struts-plugin.xml</param-value>
+        <param-value>struts-default.xml,struts-plugin.xml,struts.xml,entando-struts-plugin.xml,japs-struts-plugin.xml
+        </param-value>
     </context-param>
     <context-param>
         <param-name>org.apache.tiles.definition.DefinitionsFactory.DEFINITIONS_CONFIG</param-name>
@@ -84,7 +87,8 @@
     </servlet>
     <servlet>
         <servlet-name>Struts2ExtServlet</servlet-name>
-        <servlet-class>org.entando.entando.aps.internalservlet.system.dispatcher.Struts2ServletDispatcher</servlet-class>
+        <servlet-class>org.entando.entando.aps.internalservlet.system.dispatcher.Struts2ServletDispatcher
+        </servlet-class>
     </servlet>
     <servlet>
         <display-name>API Servlet</display-name>
@@ -191,7 +195,9 @@
     <env-entry>
         <env-entry-name>applicationBaseURL</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
-        <env-entry-value>${profile.application.baseurl.protocol}://${profile.application.baseurl.hostname}${profile.application.baseurl.port.separator}${profile.application.baseurl.port}/${profile.application.name}/</env-entry-value>
+        <env-entry-value>
+            ${profile.application.baseurl.protocol}://${profile.application.baseurl.hostname}${profile.application.baseurl.port.separator}${profile.application.baseurl.port}/${profile.application.name}/
+        </env-entry-value>
     </env-entry>
     <env-entry>
         <env-entry-name>resourceRootURL</env-entry-name>
@@ -225,7 +231,4 @@
         <env-entry-value>${profile.config.path}</env-entry-value>
     </env-entry>
     <!-- envs used by jBoss : end -->
-
-
-
 </web-app>
