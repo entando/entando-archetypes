@@ -283,27 +283,6 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>copy-resources-security-conf</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>src/main/webapp/WEB-INF/conf</outputDirectory>
-                            <encoding>UTF-8</encoding>
-                            <overwrite>true</overwrite>
-                            <resources>
-                                <resource>
-                                    <directory>src/main/config</directory>
-                                    <includes>
-                                        <include>security.properties</include>
-                                    </includes>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>copy-resources-conf-jboss</id>
                         <phase>validate</phase>
                         <goals>
@@ -318,13 +297,6 @@
                                     <directory>src/main/config/${jboss}</directory>
                                     <includes>
                                         <include>systemParams.properties</include>
-                                    </includes>
-                                    <filtering>true</filtering>
-                                </resource>
-                                <resource>
-                                    <directory>src/main/config</directory>
-                                    <includes>
-                                        <include>security.properties</include>
                                     </includes>
                                     <filtering>true</filtering>
                                 </resource>
@@ -436,7 +408,6 @@
                             </resources>
                         </configuration>
                     </execution>
-
                     <execution>
                         <id>copy-resources-jettycontextxml</id>
                         <phase>validate</phase>
@@ -494,27 +465,28 @@
                             </resources>
                         </configuration>
                     </execution>
-                    <!--					<execution>
-                            <id>lesscss-include-in-pagemodels</id>
-                             here the phase you need
-                            <phase>process-resources</phase>
-                            <goals>
-                                    <goal>copy-resources</goal>
-                            </goals>
-                            <configuration>
-                                    <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/aps/jsp/models/inc/lesscss-active</outputDirectory>
-                                    <encoding>UTF-8</encoding>
-                                    <overwrite>true</overwrite>
-                                    <resources>
-                                            <resource>
-                                                    <directory>${project.basedir}/src/main/webapp/WEB-INF/aps/jsp/models/inc/lesscss-available/${env}</directory>
-                                                    <includes>
-                                                            <include>lesscss.jsp</include>
-                                                    </includes>
-                                            </resource>
-                                    </resources>
-                            </configuration>
-                    </execution>-->
+					<!--
+                    <execution>
+                        <id>lesscss-include-in-pagemodels</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/aps/jsp/models/inc/lesscss-active</outputDirectory>
+                            <encoding>UTF-8</encoding>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/src/main/webapp/WEB-INF/aps/jsp/models/inc/lesscss-available/${env}</directory>
+                                    <includes>
+                                        <include>lesscss.jsp</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+					-->
                 </executions>
             </plugin>
             <plugin>
