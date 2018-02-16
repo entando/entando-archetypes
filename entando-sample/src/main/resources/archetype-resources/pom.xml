@@ -275,6 +275,7 @@
                                     <directory>src/main/config</directory>
                                     <includes>
                                         <include>systemParams.properties</include>
+                                        <include>security.properties</include>
                                     </includes>
                                     <filtering>true</filtering>
                                 </resource>
@@ -407,7 +408,6 @@
                             </resources>
                         </configuration>
                     </execution>
-
                     <execution>
                         <id>copy-resources-jettycontextxml</id>
                         <phase>validate</phase>
@@ -895,7 +895,7 @@
             <version>3.1.0</version>
             <scope>test</scope>
         </dependency>
-		<dependency>
+        <dependency>
             <groupId>org.entando.entando.plugins</groupId>
             <artifactId>entando-plugin-jpinfinispan</artifactId>
             <version>${entando.version}</version>
