@@ -282,6 +282,27 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <id>copy-resources-security-conf</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>src/main/webapp/WEB-INF/conf</outputDirectory>
+                            <encoding>UTF-8</encoding>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/config</directory>
+                                    <includes>
+                                        <include>security.properties</include>
+                                    </includes>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>copy-resources-conf-jboss</id>
                         <phase>validate</phase>
                         <goals>
