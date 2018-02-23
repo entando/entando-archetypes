@@ -275,6 +275,7 @@
                                     <directory>src/main/config</directory>
                                     <includes>
                                         <include>systemParams.properties</include>
+                                        <include>security.properties</include>
                                     </includes>
                                     <filtering>true</filtering>
                                 </resource>
