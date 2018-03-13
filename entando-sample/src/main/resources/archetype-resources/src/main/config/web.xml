@@ -41,14 +41,22 @@
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
-          <param-name>encoding</param-name>
-          <param-value>UTF-8</param-value>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
         </init-param>
         <init-param>
-          <param-name>forceEncoding</param-name>
-          <param-value>true</param-value>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
         </init-param>
     </filter>
+    <filter>
+        <filter-name>cors</filter-name>
+        <filter-class>org.entando.entando.aps.servlet.CORSFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>cors</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>struts2</filter-name>
         <url-pattern>/do/*</url-pattern>
@@ -119,15 +127,15 @@
         <servlet-name>AccessTokenServlet</servlet-name>
         <servlet-class>org.entando.entando.aps.servlet.TokenEndpointServlet</servlet-class>
     </servlet>
-	<servlet>
-		<servlet-name>springDispatcher</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:spring/web/servlet-context.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <servlet>
+        <servlet-name>springDispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/web/servlet-context.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>*.wp</url-pattern>
@@ -152,15 +160,15 @@
         <servlet-name>ResourceControllerServlet</servlet-name>
         <url-pattern>/protected/*</url-pattern>
     </servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>springDispatcher</servlet-name>
-		<url-pattern>/api/*</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>springDispatcher</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>APIServlet</servlet-name>
         <url-pattern>/legacyapi/*</url-pattern>
     </servlet-mapping>
-   <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AuthorizationServlet</servlet-name>
         <url-pattern>/OAuth2/authorize</url-pattern>
     </servlet-mapping>
