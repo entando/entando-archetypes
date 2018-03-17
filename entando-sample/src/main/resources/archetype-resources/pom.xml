@@ -422,6 +422,7 @@
                                     <directory>src/main/config</directory>
                                     <includes>
                                         <include>jetty-env.xml</include>
+                                        <include>jetty.xml</include>
                                     </includes>
                                     <filtering>true</filtering>
                                 </resource>
@@ -561,6 +562,7 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>7.6.16.v20140903</version>
                 <configuration>
+                    <jettyXml>${project.build.directory}/jetty/jetty.xml</jettyXml>
                     <scanIntervalSeconds>5</scanIntervalSeconds>
                     <webAppSourceDirectory>${basedir}/src/main/webapp</webAppSourceDirectory>
                     <webApp>
