@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+	<Call name="addConnector">
+		<Arg>
+			<New class="org.eclipse.jetty.server.nio.SelectChannelConnector">
+				<Set name="port">${profile.application.baseurl.port}</Set>
+				<Set name="host">${profile.application.baseurl.hostname}</Set>
+				<Set name="maxIdleTime">300000</Set>
+				<Set name="Acceptors">4</Set>
+				<Set name="statsOn">false</Set>
+				<Set name="confidentialPort">8443</Set>
+			    <Set name="lowResourcesConnections">20000</Set>
+			    <Set name="lowResourcesMaxIdleTime">5000</Set>
+			</New>
+		</Arg>
+	</Call>
+
+    <Set name="handler">
+        <New id="Handlers" class="org.eclipse.jetty.server.handler.HandlerCollection">
+            <Set name="handlers">
+                <Array type="org.eclipse.jetty.server.Handler">
+                    <Item>
+                        <New id="RequestLog" class="org.eclipse.jetty.server.handler.RequestLogHandler"/>
+                    </Item>
+                </Array>
+            </Set>
+        </New>
+    </Set>
+
+    <Ref id="RequestLog">
+        <Set name="requestLog">
+            <New id="RequestLogImpl" class="org.eclipse.jetty.server.NCSARequestLog">
+            <Set name="filename"><SystemProperty name="jetty.logs" default="${profile.workdir}/target"/>/yyyy_mm_dd.request.log</Set>
+            <Set name="filenameDateFormat">yyyy_MM_dd</Set>
+            <Set name="retainDays">90</Set>
+            <Set name="append">true</Set>
+            <Set name="extended">false</Set>
+            <Set name="logCookies">false</Set>
+            <Set name="LogTimeZone">GMT</Set>
+            </New>
+        </Set>
+    </Ref>
+</Configure>
