@@ -5,6 +5,12 @@
 
     <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
         <Arg></Arg>
+        <Arg>logActiveFileOutput</Arg>
+        <Arg type="java.lang.String">${profile.log.activeFileOutput}</Arg>
+        <Arg type="boolean">false</Arg>
+    </New>
+    <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg></Arg>
         <Arg>logName</Arg>
         <Arg type="java.lang.String">${profile.application.name}</Arg>
         <Arg type="boolean">false</Arg>
