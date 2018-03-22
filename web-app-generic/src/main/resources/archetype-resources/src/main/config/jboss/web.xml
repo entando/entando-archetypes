@@ -200,6 +200,11 @@
 
     <!-- envs used by jBoss : start -->
     <env-entry>
+        <env-entry-name>logActiveFileOutput</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>${profile.log.activeFileOutput}</env-entry-value>
+    </env-entry>
+    <env-entry>
         <env-entry-name>logName</env-entry-name>
         <env-entry-type>java.lang.String</env-entry-type>
         <env-entry-value>${profile.application.name}.log</env-entry-value>
