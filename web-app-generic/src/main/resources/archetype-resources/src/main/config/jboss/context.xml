@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Context path="/${profile.application.name}" docBase="./${profile.application.name}" debug="1" reloadable="false">
 	<!--
+	<Environment name="logActiveFileOutput" value="${profile.log.activeFileOutput}" type="java.lang.String" override="false" />
 	<Environment name="logName" value="${profile.application.name}" type="java.lang.String" override="false" />
 	<Environment name="logFilePrefix" value="${profile.log.file.prefix}" type="java.lang.String" override="false" />
 	<Environment name="logLevel" value="${profile.log.level}" type="java.lang.String" override="false" />
