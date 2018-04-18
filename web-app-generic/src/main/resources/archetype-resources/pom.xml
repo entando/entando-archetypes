@@ -115,7 +115,7 @@
         <skipDerby>true</skipDerby>
         <skipStandalone>true</skipStandalone>
         <entando.version>5.0.0-SNAPSHOT</entando.version>
-        <spring.version>4.1.6.RELEASE</spring.version>
+        <spring.version>5.0.5.RELEASE</spring.version>
         <struts2.version>2.5.10.1</struts2.version>
         <cxf.version>2.7.14</cxf.version>
     </properties>
@@ -534,9 +534,9 @@
             </plugin>
             <!-- mvn jetty:run (with hot-redeploy) -->
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>7.6.16.v20140903</version>
+                <version>9.2.11.v20150529</version>
                 <configuration>
                     <scanIntervalSeconds>5</scanIntervalSeconds>
                     <webAppSourceDirectory>${basedir}/src/main/webapp</webAppSourceDirectory>
@@ -849,12 +849,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
