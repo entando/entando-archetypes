@@ -558,9 +558,9 @@
             </plugin>
             <!-- mvn jetty:run (with hot-redeploy) -->
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>7.6.16.v20140903</version>
+                <version>9.2.11.v20150529</version>
                 <configuration>
                     <jettyXml>${project.build.directory}/jetty/jetty.xml</jettyXml>
                     <scanIntervalSeconds>5</scanIntervalSeconds>
