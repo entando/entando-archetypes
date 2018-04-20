@@ -8,6 +8,18 @@
     <version>${version}</version>
     <name>${artifactId}</name>
     <url>http://maven.apache.org/</url>
+
+    <repositories>
+        <repository>
+            <id>snapshot-repository</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <profiles>
         <profile>
             <id>production</id>
