@@ -8,6 +8,16 @@
     <name>Entando: Archetypes</name>
     <description>Archetypes for Entando</description>
     <url>http://www.entando.com/</url>
+    <repositories>
+        <repository>
+    <id>snapthots</id>
+    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+    </snapshots>
+</repository>
+    </repositories>
     <licenses>
         <license>
             <name>GNU LESSER GENERAL PUBLIC LICENSE,  Version 2.1, February 1999</name>
