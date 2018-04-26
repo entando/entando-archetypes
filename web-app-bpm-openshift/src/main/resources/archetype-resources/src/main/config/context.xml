@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context path="/${profile.application.name}" docBase="./${profile.application.name}" debug="1" reloadable="false">
+
+    <Environment name="logActiveFileOutput" value="${profile.log.activeFileOutput}" type="java.lang.String" override="false" />
+	<Environment name="logName" value="${profile.application.name}" type="java.lang.String" override="false" />
+    <Environment name="logFilePrefix" value="${profile.log.file.prefix}" type="java.lang.String" override="false" />
+    <Environment name="logLevel" value="${profile.log.level}" type="java.lang.String" override="false" />
+    <Environment name="logFileSize" value="${profile.log.file.size}" type="java.lang.String" override="false" />
+    <Environment name="logFilesCount" value="${profile.log.file.count}" type="java.lang.String" override="false" />
+
+    <Environment name="configVersion" value="${profile.config.version}" type="java.lang.String" override="false" />
+
+    <Environment name="applicationBaseURL" value="http://${profile.application.baseurl.hostname}${profile.application.baseurl.port.separator}${profile.application.baseurl.port}/${profile.application.name}/" type="java.lang.String" override="false" />
+    <Environment name="resourceRootURL" value="/${profile.application.name}/resources/" type="java.lang.String" override="false" />
+    <Environment name="protectedResourceRootURL" value="/${profile.application.name}/protected/" type="java.lang.String" override="false" />
+
+    <Environment name="resourceDiskRootFolder" value="${profile.resources.path}" type="java.lang.String" override="false" />
+    <Environment name="protectedResourceDiskRootFolder" value="${profile.resources.path.protected}" type="java.lang.String" override="false" />
+
+    <Environment name="indexDiskRootFolder" value="${profile.index.path}" type="java.lang.String" override="false" />
+    
+    <Resource name="jdbc/portDataSource" auth="Container"
+                  type="javax.sql.DataSource" driverClassName="${profile.database.driverClassName}"
+                  maxActive="8" maxIdle="4"
+                  username="${profile.database.username}" password="${profile.database.password}"
+                  url="${profile.database.url.portdb}" />
+
+    <Resource name="jdbc/servDataSource" auth="Container"
+                  type="javax.sql.DataSource" driverClassName="${profile.database.driverClassName}"
+                  maxActive="8" maxIdle="4"
+                  username="${profile.database.username}" password="${profile.database.password}"
+                  url="${profile.database.url.servdb}" />
+
+</Context>
