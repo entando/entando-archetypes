@@ -61,5 +61,6 @@
         <module>entando-sample</module>
         <module>web-app-generic</module>
         <module>web-app-bpm</module>
+        <module>web-app-bpm-openshift</module>
     </modules>
 </project>
