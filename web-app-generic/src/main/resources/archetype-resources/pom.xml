@@ -661,6 +661,43 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Fabric8 docker plugin -->
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.25.2</version>
+                <configuration>
+                    <images>
+                        <image>
+                            <name>entando/${project.build.finalName}</name>
+                            <build>
+                                <from>entando/base-builder-jetty</from>
+                                <maintainer>Entando Srl</maintainer>
+                                <entryPoint>
+                                    <shell>mvn jetty:run</shell>
+                                </entryPoint>
+                                <assembly>
+                                    <mode>dir</mode>
+                                    <targetDir>/opt/entando/${project.build.finalName}</targetDir>
+                                    <descriptorRef>project</descriptorRef>
+                                </assembly>
+                                <workdir>${project.build.finalName}</workdir>
+                                <tags>
+                                    <tag>latest</tag>
+                                </tags>
+                                <ports>
+                                    <port>8080</port>
+                                </ports>
+                            </build>
+                            <run>
+                                <namingStrategy>alias</namingStrategy>
+                            </run>
+                            <alias>${project.build.finalName}</alias>
+                        </image>
+                    </images>
+                </configuration>
+            </plugin>
+            <!-- End of Fabric8 docker plugin -->
         </plugins>
         <pluginManagement>
             <plugins>
