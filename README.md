@@ -13,6 +13,7 @@ The **Entando archetypes** project includes the following modules:
 * **entando-sample** is the Maven archetype to build a web application based on Entando core components developed by Bootstrap
 * **webapp-generic** is the Maven archetype to build a generic web application based on Entando core components
 * **webapp-app-bpm** is the Maven archetype to build a generic web application based on Inspinia toolkit.
+* **web-app-bpm-openshift** is the Maven archetype to build a generic web application based on Entando and deployable to openshift.
 
 For latest updated news, please visit the company websites: https://www.entando.com.
 
