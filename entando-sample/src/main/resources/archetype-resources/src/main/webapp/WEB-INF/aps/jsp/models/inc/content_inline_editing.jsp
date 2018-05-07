@@ -15,7 +15,7 @@
                 //toggle `popup` / `inline` mode
                 $.fn.editable.defaults.mode = 'inline';
                 $('.editLabel').editable({
-                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/en/inline/i18nlabel',
+                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />legacyapi/rs/en/inline/i18nlabel',
                     send: 'always',
                     ajaxOptions: {
                         dataType: 'json', //assuming json response
@@ -48,7 +48,7 @@
                 $('.editLabelText').editable({
                     type: 'textarea',
                     rows: 10,
-                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/en/inline/i18nlabel',
+                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />legacyapi/rs/en/inline/i18nlabel',
                     send: 'always',
                     ajaxOptions: {
                         dataType: 'json', //assuming json response
@@ -78,7 +78,7 @@
                     }
                 });
                 $('.editContent').editable({
-                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/en/inline/content',
+                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />legacyapi/rs/en/inline/content',
                     ajaxOptions: {
                         dataType: 'json', //assuming json response
                         type: 'put',
@@ -111,7 +111,7 @@
                     type: 'textarea',
                     rows: 10,
                     cols: 50,
-                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/en/inline/content',
+                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />legacyapi/rs/en/inline/content',
                     ajaxOptions: {
                         dataType: 'json', //assuming json response
                         type: 'put',
