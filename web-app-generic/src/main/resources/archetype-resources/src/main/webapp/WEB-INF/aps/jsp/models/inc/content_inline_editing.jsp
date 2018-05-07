@@ -15,7 +15,7 @@
                 //toggle `popup` / `inline` mode
                 $.fn.editable.defaults.mode = 'inline';
                 $('.editLabel').editable({
-                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/en/inline/i18nlabel',
+                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />legacyapi/rs/en/inline/i18nlabel',
                     send: 'always',
                     ajaxOptions: {
                         dataType: 'json', //assuming json response
@@ -23,8 +23,10 @@
                         contentType: 'application/json',
                         beforeSend: function (xhr) {
                             var accessToken = window.localStorage.getItem("accessToken");
+                            if (!accessToken) {
+                                accessToken = '<c:out value="${sessionScope.currentUser.accessToken}"/>';
+                            }
                             xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
-
                         }
                     },
                     params: function (params) {
@@ -45,7 +47,7 @@
                 $('.editLabelText').editable({
                     type: 'textarea',
                     rows: 10,
-                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/en/inline/i18nlabel',
+                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />legacyapi/rs/en/inline/i18nlabel',
                     send: 'always',
                     ajaxOptions: {
                         dataType: 'json', //assuming json response
@@ -53,6 +55,9 @@
                         contentType: 'application/json',
                         beforeSend: function (xhr) {
                             var accessToken = window.localStorage.getItem("accessToken");
+                            if (!accessToken) {
+                                accessToken = '<c:out value="${sessionScope.currentUser.accessToken}"/>';
+                            }
                             xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
 
                         }
@@ -72,13 +77,16 @@
                     }
                 });
                 $('.editContent').editable({
-                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/en/inline/content',
+                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />legacyapi/rs/en/inline/content',
                     ajaxOptions: {
                         dataType: 'json', //assuming json response
                         type: 'put',
                         contentType: 'application/json',
                         beforeSend: function (xhr) {
                             var accessToken = window.localStorage.getItem("accessToken");
+                            if (!accessToken) {
+                                accessToken = '<c:out value="${sessionScope.currentUser.accessToken}"/>';
+                            }
                             xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
 
                         }
@@ -102,13 +110,16 @@
                     type: 'textarea',
                     rows: 10,
                     cols: 50,
-                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />api/rs/en/inline/content',
+                    url: '<wp:info key="systemParam" paramName="applicationBaseURL" />legacyapi/rs/en/inline/content',
                     ajaxOptions: {
                         dataType: 'json', //assuming json response
                         type: 'put',
                         contentType: 'application/json',
                         beforeSend: function (xhr) {
                             var accessToken = window.localStorage.getItem("accessToken");
+                            if (!accessToken) {
+                                accessToken = '<c:out value="${sessionScope.currentUser.accessToken}"/>';
+                            }
                             xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
 
                         }
