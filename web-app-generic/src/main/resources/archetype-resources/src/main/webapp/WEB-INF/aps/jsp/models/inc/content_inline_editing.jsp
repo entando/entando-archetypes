@@ -23,8 +23,10 @@
                         contentType: 'application/json',
                         beforeSend: function (xhr) {
                             var accessToken = window.localStorage.getItem("accessToken");
+                            if (!accessToken) {
+                                accessToken = '<c:out value="${sessionScope.currentUser.accessToken}"/>';
+                            }
                             xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
-
                         }
                     },
                     params: function (params) {
@@ -53,6 +55,9 @@
                         contentType: 'application/json',
                         beforeSend: function (xhr) {
                             var accessToken = window.localStorage.getItem("accessToken");
+                            if (!accessToken) {
+                                accessToken = '<c:out value="${sessionScope.currentUser.accessToken}"/>';
+                            }
                             xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
 
                         }
@@ -79,6 +84,9 @@
                         contentType: 'application/json',
                         beforeSend: function (xhr) {
                             var accessToken = window.localStorage.getItem("accessToken");
+                            if (!accessToken) {
+                                accessToken = '<c:out value="${sessionScope.currentUser.accessToken}"/>';
+                            }
                             xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
 
                         }
@@ -109,6 +117,9 @@
                         contentType: 'application/json',
                         beforeSend: function (xhr) {
                             var accessToken = window.localStorage.getItem("accessToken");
+                            if (!accessToken) {
+                                accessToken = '<c:out value="${sessionScope.currentUser.accessToken}"/>';
+                            }
                             xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
 
                         }
