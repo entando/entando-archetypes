@@ -17,6 +17,29 @@
         <updatePolicy>always</updatePolicy>
       </snapshots>
     </repository>
+    <!--development workaround to get snapshots. NOT FOR RELEASE TO CUSTOMERS!!!. Ampie: remember to take this out-->
+    <repository>
+      <id>entando-snapshots</id>
+      <url>http://repository.entando.org/repository/maven-snapshots/</url>
+      <layout>default</layout>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>entando-releases</id>
+      <url>http://repository.entando.org/repository/maven-releases/</url>
+      <layout>default</layout>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
   </repositories>
   <profiles>
     <profile>
@@ -94,6 +117,126 @@
       </properties>
     </profile>
 
+    <profile>
+      <id>openshift</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <env>openshift</env>
+        <env.db.environment>production</env.db.environment>
+        <jboss>jboss</jboss>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>io.fabric8</groupId>
+            <artifactId>fabric8-maven-plugin</artifactId>
+            <version>3.5.37</version>
+            <configuration>
+              <mode>openshift</mode>
+              <resourceDir>src/main/fabric8/wildfly</resourceDir>
+              <images>
+                <image>
+                  <name>%g/%a:%v</name>
+                  <alias>entando</alias>
+                  <build>
+                    <from>ampie/entando-s2i-wildfly-11:${entando.version}</from>
+                    <assembly>
+                      <descriptorRef>project</descriptorRef>
+                    </assembly>
+                    <env>
+                      <PG_ENTANDO_PORT_DB_JNDI_NAME>java:jboss/datasources/${profile.application.name}PortDataSource</PG_ENTANDO_PORT_DB_JNDI_NAME>
+                      <PG_ENTANDO_SERV_DB_JNDI_NAME>java:jboss/datasources/${profile.application.name}ServDataSource</PG_ENTANDO_SERV_DB_JNDI_NAME>
+                      <!--Ampie: let's consider using a service definition here - could also be external -->
+                      <PG_ENTANDO_PORT_DB_CONNECTION_STRING>${profile.database.url.portdb}</PG_ENTANDO_PORT_DB_CONNECTION_STRING>
+                      <PG_ENTANDO_SERV_DB_CONNECTION_STRING>${profile.database.url.servdb}</PG_ENTANDO_SERV_DB_CONNECTION_STRING>
+                      <MAVEN_ARGS_APPEND>--no-snapshot-updates</MAVEN_ARGS_APPEND>
+                    </env>
+                  </build>
+                </image>
+              </images>
+              <resources>
+                <services>
+                  <service>
+                    <name>${profile.application.name}-service</name>
+                    <expose>true</expose>
+                    <ports>
+                      <port>
+                        <port>80</port>
+                        <targetPort>8080</targetPort>
+                      </port>
+                    </ports>
+                  </service>
+                </services>
+              </resources>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>postgresql</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+
+      <properties>
+        <fabric8.suffix>-db</fabric8.suffix>
+        <env>postgresql</env>
+        <env.db.environment>production</env.db.environment>
+        <jboss></jboss>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>io.fabric8</groupId>
+            <artifactId>fabric8-maven-plugin</artifactId>
+            <version>3.5.37</version>
+            <configuration>
+              <resourceDir>src/main/fabric8/postgresql</resourceDir>
+              <mode>openshift</mode>
+              <images>
+                <image>
+                  <name>%g/%a:%v</name>
+                  <alias>entando-db</alias>
+                  <build>
+                    <from>ampie/entando-s2i-postgresql-95:${entando.version}</from>
+                    <assembly>
+                      <descriptorRef>project</descriptorRef>
+                    </assembly>
+                    <env>
+                      <POSTGRESQL_MAX_CONNECTIONS>100</POSTGRESQL_MAX_CONNECTIONS>
+                      <POSTGRESQL_MAX_PREPARED_TRANSACTIONS>0</POSTGRESQL_MAX_PREPARED_TRANSACTIONS>
+                      <POSTGRESQL_SHARED_BUFFERS>32MB</POSTGRESQL_SHARED_BUFFERS>
+                      <POSTGRESQL_EFFECTIVE_CACHE_SIZE>128MB</POSTGRESQL_EFFECTIVE_CACHE_SIZE>
+                      <POSTGRESQL_USER>${profile.database.username}</POSTGRESQL_USER>
+                      <POSTGRESQL_PASSWORD>${profile.database.password}</POSTGRESQL_PASSWORD>
+                      <POSTGRESQL_DATABASE>${profile.database.name}</POSTGRESQL_DATABASE>
+                    </env>
+                  </build>
+                </image>
+              </images>
+              <resources>
+                <services>
+                  <service>
+                    <name>${profile.application.name}-db-service</name>
+                    <expose>true</expose>
+                    <ports>
+                      <port>
+                        <port>5432</port>
+                        <targetPort>5432</targetPort>
+                      </port>
+                    </ports>
+                  </service>
+                </services>
+              </resources>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
   </profiles>
   <properties>
     <!--
@@ -155,6 +298,24 @@
       <filter>src/main/filters/filter-${env}.properties</filter>
     </filters>
     <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>1.0.0</version>
+        <executions>
+          <execution>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>read-project-properties</goal>
+            </goals>
+            <configuration>
+              <files>
+                <file>src/main/filters/filter-${env}.properties</file>
+              </files>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
@@ -649,81 +810,6 @@
           </execution>
         </executions>
       </plugin>
-      <!-- Fabric8 docker plugin -->
-      <plugin>
-        <groupId>io.fabric8</groupId>
-        <artifactId>docker-maven-plugin</artifactId>
-        <version>0.25.2</version>
-        <configuration>
-          <images>
-            <image>
-              <name>entando/${project.build.finalName}</name>
-              <build>
-                <from>entando/base-builder-jetty</from>
-                <maintainer>Entando Srl</maintainer>
-                <entryPoint>
-                  <shell>mvn jetty:run</shell>
-                </entryPoint>
-                <assembly>
-                  <mode>dir</mode>
-                  <targetDir>/opt/entando/${project.build.finalName}</targetDir>
-                  <descriptorRef>project</descriptorRef>
-                </assembly>
-                <workdir>${project.build.finalName}</workdir>
-                <tags>
-                  <tag>latest</tag>
-                </tags>
-                <ports>
-                  <port>8080</port>
-                </ports>
-              </build>
-              <run>
-                <namingStrategy>alias</namingStrategy>
-              </run>
-              <alias>${project.build.finalName}</alias>
-            </image>
-          </images>
-        </configuration>
-      </plugin>
-      <!-- End of Fabric8 docker plugin -->
-
-      <!-- Fabric8 maven plugin -->
-      <plugin>
-        <groupId>io.fabric8</groupId>
-        <artifactId>fabric8-maven-plugin</artifactId>
-        <version>3.5.37</version>
-        <configuration>
-          <images>
-            <image>
-              <name>entando/${project.build.finalName}</name>
-              <build>
-                <from>builders2i</from>
-                <maintainer>Entando Srl</maintainer>
-                <entryPoint>
-                  <shell>mvn jetty:run</shell>
-                </entryPoint>
-                <assembly>
-                  <mode>dir</mode>
-                  <targetDir>/opt/entando/${project.build.finalName}</targetDir>
-                  <descriptorRef>project</descriptorRef>
-                </assembly>
-                <workdir>${project.build.finalName}</workdir>
-                <tags>
-                  <tag>latest</tag>
-                </tags>
-                <ports>
-                  <port>8080</port>
-                </ports>
-              </build>
-              <run>
-                <namingStrategy>alias</namingStrategy>
-              </run>
-              <alias>${project.build.finalName}</alias>
-            </image>
-          </images>
-        </configuration>
-      </plugin>
-      <!-- End of Fabric8 maven plugin -->
     </plugins>
     <pluginManagement>
       <plugins>

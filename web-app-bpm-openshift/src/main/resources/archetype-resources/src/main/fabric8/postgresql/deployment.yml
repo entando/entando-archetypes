@@ -1,0 +1,28 @@
+metadata:
+  name: ${profile.application.name}-db
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - env:
+          - name: POSTGRESQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name:  ${profile.application.name}-db-secrets
+                key: password
+          - name: POSTGRESQL_USER
+            valueFrom:
+              secretKeyRef:
+                name:  ${profile.application.name}-db-secrets
+                key: username
+          securityContext:
+            fsGroup: 0
+          volumeMounts:
+            - mountPath: /var/lib/pgsql/data
+              name: ${profile.application.name}-db-data
+
+      volumes:
+        - name: ${profile.application.name}-db-data
+          persistentVolumeClaim:
+            claimName: ${profile.application.name}-db-pvc

@@ -15,10 +15,22 @@
             </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
+            <directory></directory>
+            <includes>
+                <include>*.sh</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
             <directory>src/main/resources</directory>
             <includes>
                 <include>**/placeholder.txt</include>
                 <include>**/*.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>src/main/fabric8</directory>
+            <includes>
+                <include>**/*.yml</include>
             </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
@@ -114,6 +126,8 @@
                 <include>.gitignore</include>
             </includes>
         </fileSet>
-
     </fileSets>
+    <requiredProperties>
+        <requiredProperty key="openshiftProject"/>
+    </requiredProperties>
 </archetype-descriptor>
