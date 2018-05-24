@@ -91,13 +91,20 @@
         <Arg type="java.lang.String">${profile.index.path}</Arg>
         <Arg type="boolean">false</Arg>
     </New>
+	
+    <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
+        <Arg></Arg>
+        <Arg>portDataSourceClassName</Arg>
+        <Arg type="java.lang.String">${profile.portDataSourceClassName}</Arg>
+        <Arg type="boolean">false</Arg>
+    </New>	
 
     <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
         <Arg></Arg>
-        <Arg>configFolder</Arg>
-        <Arg type="java.lang.String">${profile.config.path}</Arg>
+        <Arg>servDataSourceClassName</Arg>
+        <Arg type="java.lang.String">${profile.servDataSourceClassName}</Arg>
         <Arg type="boolean">false</Arg>
-    </New>
+    </New>	
 
     <New id="portDataSource" class="org.eclipse.jetty.plus.jndi.Resource">
         <Arg>java:comp/env/jdbc/portDataSource</Arg>

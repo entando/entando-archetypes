@@ -267,5 +267,16 @@
         <env-entry-type>java.lang.String</env-entry-type>
         <env-entry-value>${profile.index.path}</env-entry-value>
     </env-entry>
+    
+    <env-entry>
+        <env-entry-name>portDataSourceClassName</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>${profile.portDataSourceClassName}</env-entry-value>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>servDataSourceClassName</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>${profile.servDataSourceClassName}</env-entry-value>
+    </env-entry>
     <!-- envs used by jBoss : end -->
 </web-app>

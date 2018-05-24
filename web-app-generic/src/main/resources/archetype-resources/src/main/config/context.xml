@@ -2,7 +2,7 @@
 <Context path="/${profile.application.name}" docBase="./${profile.application.name}" debug="1" reloadable="false">
 
     <Environment name="logActiveFileOutput" value="${profile.log.activeFileOutput}" type="java.lang.String" override="false" />
-	<Environment name="logName" value="${profile.application.name}" type="java.lang.String" override="false" />
+    <Environment name="logName" value="${profile.application.name}" type="java.lang.String" override="false" />
     <Environment name="logFilePrefix" value="${profile.log.file.prefix}" type="java.lang.String" override="false" />
     <Environment name="logLevel" value="${profile.log.level}" type="java.lang.String" override="false" />
     <Environment name="logFileSize" value="${profile.log.file.size}" type="java.lang.String" override="false" />
@@ -19,16 +19,19 @@
 
     <Environment name="indexDiskRootFolder" value="${profile.index.path}" type="java.lang.String" override="false" />
     
+    <Environment name="portDataSourceClassName" value="${profile.portDataSourceClassName}" type="java.lang.String" override="false" />
+    <Environment name="servDataSourceClassName" value="${profile.servDataSourceClassName}" type="java.lang.String" override="false" />
+	
     <Resource name="jdbc/portDataSource" auth="Container"
-                  type="javax.sql.DataSource" driverClassName="${profile.database.driverClassName}"
-                  maxActive="8" maxIdle="4"
-                  username="${profile.database.username}" password="${profile.database.password}"
-                  url="${profile.database.url.portdb}" />
+              type="javax.sql.DataSource" driverClassName="${profile.database.driverClassName}"
+              maxActive="8" maxIdle="4"
+              username="${profile.database.username}" password="${profile.database.password}"
+              url="${profile.database.url.portdb}" />
 
     <Resource name="jdbc/servDataSource" auth="Container"
-                  type="javax.sql.DataSource" driverClassName="${profile.database.driverClassName}"
-                  maxActive="8" maxIdle="4"
-                  username="${profile.database.username}" password="${profile.database.password}"
-                  url="${profile.database.url.servdb}" />
+              type="javax.sql.DataSource" driverClassName="${profile.database.driverClassName}"
+              maxActive="8" maxIdle="4"
+              username="${profile.database.username}" password="${profile.database.password}"
+              url="${profile.database.url.servdb}" />
 
 </Context>
