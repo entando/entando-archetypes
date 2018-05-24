@@ -127,7 +127,7 @@
         <entando.version>5.0.0-SNAPSHOT</entando.version>
         <spring.version>5.0.5.RELEASE</spring.version>
         <struts2.version>2.5.10.1</struts2.version>
-        <cxf.version>2.7.14</cxf.version>
+        <cxf.version>3.0.4</cxf.version>
     </properties>
     <build>
         <finalName>${artifactId}</finalName>
