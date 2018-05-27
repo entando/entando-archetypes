@@ -3,20 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>${groupId}</groupId>
-  <artifactId>${artifactId}</artifactId>
+  <artifactId>${artifactId}${fabric8.suffix}</artifactId>
   <packaging>war</packaging>
   <version>${version}</version>
   <name>${artifactId}</name>
   <url>http://maven.apache.org/</url>
   <repositories>
-    <repository>
-      <id>snapshot-repository</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>always</updatePolicy>
-      </snapshots>
-    </repository>
     <!--development workaround to get snapshots. NOT FOR RELEASE TO CUSTOMERS!!!. Ampie: remember to take this out-->
     <repository>
       <id>entando-snapshots</id>
@@ -141,7 +133,7 @@
                   <name>%g/%a:%v</name>
                   <alias>entando</alias>
                   <build>
-                    <from>ampie/entando-s2i-wildfly-11:${entando.version}</from>
+                    <from>ampie/entando-s2i-wildfly-12:${entando.version}</from>
                     <assembly>
                       <descriptorRef>project</descriptorRef>
                     </assembly>
@@ -151,7 +143,8 @@
                       <!--Ampie: let's consider using a service definition here - could also be external -->
                       <PG_ENTANDO_PORT_DB_CONNECTION_STRING>${profile.database.url.portdb}</PG_ENTANDO_PORT_DB_CONNECTION_STRING>
                       <PG_ENTANDO_SERV_DB_CONNECTION_STRING>${profile.database.url.servdb}</PG_ENTANDO_SERV_DB_CONNECTION_STRING>
-                      <MAVEN_ARGS_APPEND>--no-snapshot-updates</MAVEN_ARGS_APPEND>
+                      <!--<MAVEN_ARGS_APPEND>&#45;&#45;no-snapshot-updates</MAVEN_ARGS_APPEND>-->
+                      <!--<MAVEN_MIRROR_URL>${maven.mirror.url}</MAVEN_MIRROR_URL>-->
                     </env>
                   </build>
                 </image>
@@ -213,6 +206,8 @@
                       <POSTGRESQL_USER>${profile.database.username}</POSTGRESQL_USER>
                       <POSTGRESQL_PASSWORD>${profile.database.password}</POSTGRESQL_PASSWORD>
                       <POSTGRESQL_DATABASE>${profile.database.name}</POSTGRESQL_DATABASE>
+                      <!--<MAVEN_ARGS_APPEND>&#45;&#45;no-snapshot-updates</MAVEN_ARGS_APPEND>-->
+                      <!--<MAVEN_MIRROR_URL>${maven.mirror.url}</MAVEN_MIRROR_URL>-->
                     </env>
                   </build>
                 </image>
@@ -271,6 +266,8 @@
     <spring.version>5.0.5.RELEASE</spring.version>
     <struts2.version>2.5.10.1</struts2.version>
     <cxf.version>2.7.14</cxf.version>
+    <maven.mirror.url></maven.mirror.url>
+    <fabric8.suffix></fabric8.suffix>
   </properties>
   <build>
     <finalName>${artifactId}</finalName>
@@ -731,11 +728,12 @@
       <plugin>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
-        <version>9.2.11.v20150529</version>
+        <version>9.3.3.v20150827</version>
         <configuration>
           <scanIntervalSeconds>5</scanIntervalSeconds>
           <webAppSourceDirectory>${basedir}/src/main/webapp</webAppSourceDirectory>
           <webApp>
+            <webInfIncludeJarPattern>nothing</webInfIncludeJarPattern>
             <defaultsDescriptor>${basedir}/src/main/config/webdefault.xml</defaultsDescriptor>
             <contextPath>/${project.artifactId}</contextPath>
             <jettyEnvXml>${project.build.directory}/jetty/jetty-env.xml</jettyEnvXml>
@@ -906,6 +904,11 @@
     </pluginManagement>
   </build>
   <dependencies>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.entando.entando.bundles.pages</groupId>
       <artifactId>entando-page-inspinia</artifactId>
