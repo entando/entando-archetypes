@@ -4,4 +4,4 @@ else
   oc new-project ${openshiftProject};
 fi;
 rm overlays -rf
-mvn clean process-resources fabric8:build fabric8:resource fabric8:apply -Popenshift -DskipTests
+mvn clean process-resources fabric8:deploy -Popenshift -DskipTests

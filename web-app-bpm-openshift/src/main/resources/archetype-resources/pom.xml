@@ -125,6 +125,15 @@
             <groupId>io.fabric8</groupId>
             <artifactId>fabric8-maven-plugin</artifactId>
             <version>3.5.37</version>
+            <executions>
+                <execution>
+                    <id>fabric8</id>
+                    <goals>
+                        <goal>resource</goal>
+                        <goal>build</goal>
+                    </goals>
+                </execution>
+            </executions>
             <configuration>
               <mode>openshift</mode>
               <resourceDir>src/main/fabric8/wildfly</resourceDir>
@@ -186,6 +195,15 @@
             <groupId>io.fabric8</groupId>
             <artifactId>fabric8-maven-plugin</artifactId>
             <version>3.5.37</version>
+              <executions>
+                  <execution>
+                      <id>fabric8</id>
+                      <goals>
+                          <goal>resource</goal>
+                          <goal>build</goal>
+                      </goals>
+                  </execution>
+              </executions>
             <configuration>
               <resourceDir>src/main/fabric8/postgresql</resourceDir>
               <mode>openshift</mode>
@@ -205,7 +223,8 @@
                       <POSTGRESQL_EFFECTIVE_CACHE_SIZE>128MB</POSTGRESQL_EFFECTIVE_CACHE_SIZE>
                       <POSTGRESQL_USER>${profile.database.username}</POSTGRESQL_USER>
                       <POSTGRESQL_PASSWORD>${profile.database.password}</POSTGRESQL_PASSWORD>
-                      <POSTGRESQL_DATABASE>${profile.database.name}</POSTGRESQL_DATABASE>
+                      <POSTGRESQL_DATABASE>${profile.database.name.portdb}</POSTGRESQL_DATABASE>
+                      <POSTGRESQL_DATABASE2>${profile.database.name.servdb}</POSTGRESQL_DATABASE2>
                       <!--<MAVEN_ARGS_APPEND>&#45;&#45;no-snapshot-updates</MAVEN_ARGS_APPEND>-->
                       <!--<MAVEN_MIRROR_URL>${maven.mirror.url}</MAVEN_MIRROR_URL>-->
                     </env>
@@ -265,9 +284,10 @@
     <entando.version>5.0.0-SNAPSHOT</entando.version>
     <spring.version>5.0.5.RELEASE</spring.version>
     <struts2.version>2.5.10.1</struts2.version>
-    <cxf.version>2.7.14</cxf.version>
+    <cxf.version>3.0.4</cxf.version>
     <maven.mirror.url></maven.mirror.url>
     <fabric8.suffix></fabric8.suffix>
+
   </properties>
   <build>
     <finalName>${artifactId}</finalName>
@@ -307,7 +327,7 @@
             </goals>
             <configuration>
               <files>
-                <file>src/main/filters/filter-${env}.properties</file>
+                <file>${project.build.directory}/filters/filter-${env}.properties</file>
               </files>
             </configuration>
           </execution>
@@ -507,6 +527,7 @@
                   <directory>src/main/config/${jboss}</directory>
                   <includes>
                     <include>web.xml</include>
+                    <include>jboss-web.xml</include>
                   </includes>
                   <filtering>true</filtering>
                 </resource>
@@ -633,6 +654,23 @@
               </resources>
             </configuration>
           </execution>
+            <execution>
+                <id>generate-filter-properties</id>
+                <phase>generate-resources</phase>
+                <goals>
+                    <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                    <outputDirectory>${project.build.directory}/filters</outputDirectory>
+                    <encoding>UTF-8</encoding>
+                    <resources>
+                        <resource>
+                            <directory>src/main/filters/</directory>
+                            <filtering>true</filtering>
+                        </resource>
+                    </resources>
+                </configuration>
+            </execution>
           <!--
                     <execution>
                         <id>lesscss-include-in-pagemodels</id>

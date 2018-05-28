@@ -19,6 +19,9 @@
 	
 	<Environment name="indexDiskRootFolder" value="${profile.index.path}" type="java.lang.String" override="false" />
 	
+	<Environment name="portDataSourceClassName" value="${profile.portDataSourceClassName}" type="java.lang.String" override="false" />
+	<Environment name="servDataSourceClassName" value="${profile.servDataSourceClassName}" type="java.lang.String" override="false" />
+	
 	<Resource name="jdbc/portDataSource" auth="Container" 
 		type="javax.sql.DataSource" driverClassName="${profile.database.driverClassName}" 
 		maxActive="8" maxIdle="4" 

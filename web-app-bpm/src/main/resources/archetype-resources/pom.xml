@@ -782,6 +782,11 @@
         </pluginManagement>
     </build>
     <dependencies>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
         <dependency>
             <groupId>org.entando.entando.bundles.pages</groupId>
             <artifactId>entando-page-inspinia</artifactId>
