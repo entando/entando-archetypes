@@ -1,5 +1,6 @@
 ENTANDO_SERVICE_URL=$(oc describe route ${artifactId}-service|grep -oP "(?<=Requested\sHost:\t\t)[^ ]+")
-oc new-app --name ${artifactId}-microengine --docker-image ampie/entando-microengine:5.0.0-SNAPSHOT -e USE_MOCKS=false -e DOMAIN=ENTANDO_SERVICE_URL
-oc expose svc ${artifactId}-microengine
-oc new-app --name ${artifactId}-appbuilder --docker-image ampie/entando-appbuilder:5.0.0-SNAPSHOT -e USE_MOCKS=false -e DOMAIN=ENTANDO_SERVICE_URL
-oc expose svc ${artifactId}-appbuilder
+ENTANDO_VERSION=5.0.0-SNAPSHOT
+oc new-app --name ${artifactId}-mapp-engine-admin-app --docker-image entando/mapp-engine-admin-app-openshift:$ENTANDO_VERSION -e USE_MOCKS=false -e DOMAIN=$ENTANDO_SERVICE_URL
+oc expose svc ${artifactId}-mapp-engine-admin-app
+oc new-app --name ${artifactId}-app-builder --docker-image entando/app-builder-openshift:$ENTANDO_VERSION -e USE_MOCKS=false -e DOMAIN=$ENTANDO_SERVICE_URL
+oc expose svc ${artifactId}-app-builder

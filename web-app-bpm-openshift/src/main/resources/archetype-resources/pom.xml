@@ -142,14 +142,13 @@
                   <name>%g/%a:%v</name>
                   <alias>entando</alias>
                   <build>
-                    <from>ampie/entando-s2i-wildfly-12:${entando.version}</from>
+                    <from>entando/entando-fabric8s2i-wildfly-12:${entando.images.version}</from>
                     <assembly>
                       <descriptorRef>project</descriptorRef>
                     </assembly>
                     <env>
                       <PG_ENTANDO_PORT_DB_JNDI_NAME>java:jboss/datasources/${profile.application.name}PortDataSource</PG_ENTANDO_PORT_DB_JNDI_NAME>
                       <PG_ENTANDO_SERV_DB_JNDI_NAME>java:jboss/datasources/${profile.application.name}ServDataSource</PG_ENTANDO_SERV_DB_JNDI_NAME>
-                      <!--Ampie: let's consider using a service definition here - could also be external -->
                       <PG_ENTANDO_PORT_DB_CONNECTION_STRING>${profile.database.url.portdb}</PG_ENTANDO_PORT_DB_CONNECTION_STRING>
                       <PG_ENTANDO_SERV_DB_CONNECTION_STRING>${profile.database.url.servdb}</PG_ENTANDO_SERV_DB_CONNECTION_STRING>
                       <!--<MAVEN_ARGS_APPEND>&#45;&#45;no-snapshot-updates</MAVEN_ARGS_APPEND>-->
@@ -212,7 +211,7 @@
                   <name>%g/%a:%v</name>
                   <alias>entando-db</alias>
                   <build>
-                    <from>ampie/entando-s2i-postgresql-95:${entando.version}</from>
+                    <from>entando/entando-fabric8s2i-postgresql-95:${entando.images.version}</from>
                     <assembly>
                       <descriptorRef>project</descriptorRef>
                     </assembly>
@@ -282,6 +281,7 @@
     <skipDerby>true</skipDerby>
     <skipStandalone>true</skipStandalone>
     <entando.version>5.0.0-SNAPSHOT</entando.version>
+    <entando.images.version>5.0.0-SNAPSHOT</entando.images.version>
     <spring.version>5.0.5.RELEASE</spring.version>
     <struts2.version>2.5.10.1</struts2.version>
     <cxf.version>3.0.4</cxf.version>

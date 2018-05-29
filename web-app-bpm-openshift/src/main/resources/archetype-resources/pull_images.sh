@@ -1,6 +1,7 @@
-ENTANDO_SERVICE_URL=$(oc describe route ${artifactId}-service|grep -oP "(?<=Requested\sHost:\t\t)[^ ]+")
-ENTANDO_VERSION=5.0.0-SNAPSHOT
-oc new-app --name ${artifactId}-mapp-engine-admin-app --docker-image entando/mapp-engine-admin-app-openshift:$ENTANDO_VERSION -e USE_MOCKS=false -e DOMAIN=$ENTANDO_SERVICE_URL
-oc expose svc ${artifactId}-mapp-engine-admin-app
-oc new-app --name ${artifactId}-app-builder --docker-image entando/app-builder-openshift:$ENTANDO_VERSION -e USE_MOCKS=false -e DOMAIN=$ENTANDO_SERVICE_URL
-oc expose svc ${artifactId}-app-builder
+eval $(minishift docker-env)
+IMAGES=( "entando-fabric8s2i-wildfly-12" "entando-fabric8s2i-postgresql-95" "mapp-engine-admin-app-openshift" "app-builder-openshift" )
+#[[for IMAGE in "${IMAGES[@]}"]]#
+do
+  echo "Pulling image entando/$IMAGE:5.0.0-SNAPSHOT"
+  docker pull entando/$IMAGE:5.0.0-SNAPSHOT
+done
