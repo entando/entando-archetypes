@@ -1,5 +1,5 @@
 #Overview
-This project sets up a set of Docker images for execution in Openshift.
+This project sets up all the Docker images required to run your Entando app in Openshift.
 #Instructions:
 Please follow these instructions carefully and in the correct sequence. We also advise you to follow the 
 progress of deployments on the Openshift browser console and only progress to the next step once the newly instantiated
@@ -25,6 +25,6 @@ database:
 7. Deploy the two ReactJS apps, app-builder and mapp-engine-admin-app, and point them to 
 the Wildfly service by executing ./deploy_wabapps.sh. 
 8. From the Openshift browser console, list the routes and then navigate the links that point to the 
-web-apps. Ufnortunately, due to some challenges we face making Entando work with ReactJS, these apps 
-need to be compiled when the containers start up. Please be patient and wait for their services to 
+web-apps. Unfortunately, due to some challenges we face making Entando work with ReactJS, these apps 
+need to be built and optimized when the containers start up. Please be patient and wait for their services to 
 become available. 
