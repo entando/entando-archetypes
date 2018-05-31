@@ -142,7 +142,7 @@
                   <name>%g/%a:%v</name>
                   <alias>entando</alias>
                   <build>
-                    <from>entando/entando-fabric8s2i-wildfly-12:${entando.images.version}</from>
+                    <from>entando/entando-fabric8s2i-wildfly-12:${entando.version}</from>
                     <assembly>
                       <descriptorRef>project</descriptorRef>
                     </assembly>
@@ -211,7 +211,7 @@
                   <name>%g/%a:%v</name>
                   <alias>entando-db</alias>
                   <build>
-                    <from>entando/entando-fabric8s2i-postgresql-95:${entando.images.version}</from>
+                    <from>entando/entando-fabric8s2i-postgresql-95:${entando.version}</from>
                     <assembly>
                       <descriptorRef>project</descriptorRef>
                     </assembly>
@@ -280,8 +280,7 @@
 
     <skipDerby>true</skipDerby>
     <skipStandalone>true</skipStandalone>
-    <entando.version>5.0.0-SNAPSHOT</entando.version>
-    <entando.images.version>5.0.0-SNAPSHOT</entando.images.version>
+    <entando.version>5.0.0</entando.version>
     <spring.version>5.0.5.RELEASE</spring.version>
     <struts2.version>2.5.10.1</struts2.version>
     <cxf.version>3.0.4</cxf.version>
