@@ -23,7 +23,7 @@ database:
      * **profile.database.password**: The password of the abovementioned Postgresql user
 6. Build the Wildfly 12 image that contains the WAR file using ./build_and_deploy_app.sh. 
 7. Deploy the two ReactJS apps, app-builder and mapp-engine-admin-app, and point them to 
-the Wildfly service by executing ./deploy_wabapps.sh. 
+the Wildfly service by executing ./deploy_webapps.sh. 
 8. From the Openshift browser console, list the routes and then navigate the links that point to the 
 web-apps. Unfortunately, due to some challenges we face making Entando work with ReactJS, these apps 
 need to be built and optimized when the containers start up. Please be patient and wait for their services to 
