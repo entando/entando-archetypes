@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.entando.entando</groupId>
         <artifactId>entando-archetypes</artifactId>
-        <version>5.0.0</version>
+        <version>5.0.1-SNAPSHOT</version>
     </parent>
     <groupId>org.entando.entando</groupId>
     <artifactId>entando-archetype-plugin-generic</artifactId>
