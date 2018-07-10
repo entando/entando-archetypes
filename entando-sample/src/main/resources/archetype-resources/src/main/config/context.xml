@@ -10,7 +10,7 @@
 
     <Environment name="configVersion" value="${profile.config.version}" type="java.lang.String" override="false" />
 
-    <Environment name="applicationBaseURL" value="http://${profile.application.baseurl.hostname}${profile.application.baseurl.port.separator}${profile.application.baseurl.port}/${profile.application.name}/" type="java.lang.String" override="false" />
+    <Environment name="applicationBaseURL" value="${$profile.aplication.baseurl.protocol}://${profile.application.baseurl.hostname}${profile.application.baseurl.port.separator}${profile.application.baseurl.port}/${profile.application.name}/" type="java.lang.String" override="false" />
     <Environment name="resourceRootURL" value="/${profile.application.name}/resources/" type="java.lang.String" override="false" />
     <Environment name="protectedResourceRootURL" value="/${profile.application.name}/protected/" type="java.lang.String" override="false" />
 
