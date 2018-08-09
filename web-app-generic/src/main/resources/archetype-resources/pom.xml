@@ -186,10 +186,10 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>2.2.1</version>
+                                    <version>3.0.0</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>1.6</version>
+                                    <version>1.8</version>
                                 </requireJavaVersion>
                             </rules>
                         </configuration>
@@ -205,20 +205,6 @@
                     <source>1.8</source>
                 </configuration>
             </plugin>
-            <!-- sources jars -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- end sources jars -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
