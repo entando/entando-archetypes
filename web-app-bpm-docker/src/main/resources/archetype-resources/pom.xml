@@ -668,7 +668,7 @@
             <image>
               <name>entando/${project.build.finalName}</name>
               <build>
-                <from>entando/entando-wildfly12-quickstart-docker:latest</from>
+                <from>entando/entando-wildfly12-base:${entando.version}</from>
                 <assembly>
                   <mode>dir</mode>
                   <targetDir>/wildfly/standalone/deployments/</targetDir>
