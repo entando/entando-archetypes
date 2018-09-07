@@ -1,0 +1,15 @@
+FROM entando/entando-postgresql95-openshift:${entando.version}
+ENV POSTGRESQL_USER=agile \
+    POSTGRESQL_PASSWORD=agile \
+    POSTGRESQL_ADMIN_PASSWORD=postgres \
+    POSTGRESQL_DATABASE=entandoPort \
+    POSTGRESQL_DATABASE2=entandoServ \
+    POSTGRESQL_MAX_PREPARED_TRANSACTIONS=0 \
+    POSTGRESQL_SHARED_BUFFERS=32MB
+COPY ./src  /opt/s2i/destination/src/src
+COPY ./*.xml /opt/s2i/destination/src/
+
+RUN $STI_SCRIPTS_PATH/assemble && \
+    rm -Rf $HOME/.m2/repository/* && \
+    rm -Rf /opt/s2i/destination/src/target
+CMD $STI_SCRIPTS_PATH/run
