@@ -145,7 +145,7 @@
         <entando.version>5.1.0-SNAPSHOT</entando.version>
         <spring.version>5.0.8.RELEASE</spring.version>
         <struts2.version>2.5.17</struts2.version>
-        <cxf.version>3.0.4</cxf.version>
+        <cxf.version>3.1.12</cxf.version>
     </properties>
     <build>
         <finalName>${artifactId}</finalName>
@@ -564,7 +564,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.2.11.v20150529</version>
+                <version>9.4.8.v20180619</version>
                 <configuration>
                     <scanIntervalSeconds>5</scanIntervalSeconds>
                     <webAppSourceDirectory>${basedir}/src/main/webapp</webAppSourceDirectory>
