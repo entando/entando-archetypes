@@ -65,9 +65,6 @@
         <listener-class>org.entando.entando.aps.servlet.StartupListener</listener-class>
     </listener>
     <listener>
-        <listener-class>org.entando.entando.apsadmin.system.resource.EntandoPluginLabelListener</listener-class>
-    </listener>
-    <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
     <servlet>
