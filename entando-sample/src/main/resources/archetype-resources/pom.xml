@@ -923,10 +923,10 @@
             <type>war</type>
         </dependency>
         <!-- enable if you need to test Oracle DB connection with jetty -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc7</artifactId>
             <version>12.1.0.2</version>
-        </dependency>
+        </dependency> -->
     </dependencies>
 </project>
