@@ -924,10 +924,9 @@
         </dependency>
         <!-- enable if you need to test Oracle DB connection with jetty -->
         <dependency>
-            <groupId>oracle.jdbc</groupId>
+            <groupId>com.oracle</groupId>
             <artifactId>ojdbc7</artifactId>
             <version>12.1.0.2</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
