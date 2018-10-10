@@ -19,3 +19,6 @@ plugin/.settings/
 *.iml
 .iml
 .idea
+.scannerwork/
+dependency-check.sh
+sonar-project.properties
