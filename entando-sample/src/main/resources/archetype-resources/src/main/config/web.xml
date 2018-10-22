@@ -118,14 +118,6 @@
     </servlet>
     
     <servlet>
-        <servlet-name>AuthorizationServlet</servlet-name>
-        <servlet-class>org.entando.entando.aps.servlet.AuthEndpointServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AccessTokenServlet</servlet-name>
-        <servlet-class>org.entando.entando.aps.servlet.TokenEndpointServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>springDispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
@@ -166,14 +158,7 @@
         <servlet-name>APIServlet</servlet-name>
         <url-pattern>/legacyapi/*</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AuthorizationServlet</servlet-name>
-        <url-pattern>/OAuth2/authorize</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AccessTokenServlet</servlet-name>
-        <url-pattern>/OAuth2/access_token</url-pattern>
-    </servlet-mapping>
+    
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
