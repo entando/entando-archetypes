@@ -475,28 +475,28 @@
                             </resources>
                         </configuration>
                     </execution>
-					<!--
-                    <execution>
-                        <id>lesscss-include-in-pagemodels</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/aps/jsp/models/inc/lesscss-active</outputDirectory>
-                            <encoding>UTF-8</encoding>
-                            <overwrite>true</overwrite>
-                            <resources>
-                                <resource>
-                                    <directory>${project.basedir}/src/main/webapp/WEB-INF/aps/jsp/models/inc/lesscss-available/${env}</directory>
-                                    <includes>
-                                        <include>lesscss.jsp</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-					-->
+                    <!--
+<execution>
+    <id>lesscss-include-in-pagemodels</id>
+    <phase>process-resources</phase>
+    <goals>
+        <goal>copy-resources</goal>
+    </goals>
+    <configuration>
+        <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/aps/jsp/models/inc/lesscss-active</outputDirectory>
+        <encoding>UTF-8</encoding>
+        <overwrite>true</overwrite>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/webapp/WEB-INF/aps/jsp/models/inc/lesscss-available/${env}</directory>
+                <includes>
+                    <include>lesscss.jsp</include>
+                </includes>
+            </resource>
+        </resources>
+    </configuration>
+</execution>
+                    -->
                 </executions>
             </plugin>
             <plugin>
@@ -752,6 +752,12 @@
             <type>war</type>
         </dependency>
         <dependency>
+            <groupId>org.entando.entando.bundles.pages</groupId>
+            <artifactId>entando-page-inspinia_BPM</artifactId>
+            <version>${entando.version}</version>
+            <type>war</type>
+        </dependency>       
+        <dependency>
             <groupId>org.entando.entando</groupId>
             <artifactId>entando-engine</artifactId>
             <version>${entando.version}</version>
@@ -854,7 +860,7 @@
             <version>${entando.version}</version>
             <type>war</type>
         </dependency>
-		<dependency>
+        <dependency>
             <groupId>org.entando.entando.plugins</groupId>
             <artifactId>entando-plugin-jpinfinispan</artifactId>
             <version>${entando.version}</version>
