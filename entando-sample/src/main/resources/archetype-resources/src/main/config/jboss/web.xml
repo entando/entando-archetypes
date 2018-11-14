@@ -50,14 +50,6 @@
             <param-value>true</param-value>
         </init-param>
     </filter>
-    <filter>
-        <filter-name>cors</filter-name>
-        <filter-class>org.entando.entando.aps.servlet.CORSFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>cors</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
     <filter-mapping>
         <filter-name>struts2</filter-name>
         <url-pattern>/do/*</url-pattern>
@@ -117,14 +109,7 @@
         <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet>
-        <servlet-name>AuthorizationServlet</servlet-name>
-        <servlet-class>org.entando.entando.aps.servlet.AuthEndpointServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AccessTokenServlet</servlet-name>
-        <servlet-class>org.entando.entando.aps.servlet.TokenEndpointServlet</servlet-class>
-    </servlet>
+    
     <servlet>
         <servlet-name>springDispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -166,14 +151,7 @@
         <servlet-name>APIServlet</servlet-name>
         <url-pattern>/legacyapi/*</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AuthorizationServlet</servlet-name>
-        <url-pattern>/OAuth2/authorize</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AccessTokenServlet</servlet-name>
-        <url-pattern>/OAuth2/access_token</url-pattern>
-    </servlet-mapping>
+    
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
