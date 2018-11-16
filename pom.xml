@@ -15,6 +15,12 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+    <scm>
+        <connection>scm:git:git@github.com:entando/entando-archetypes.git</connection>
+        <developerConnection>scm:git:git@github.com:entando/entando-archetypes.git</developerConnection>
+        <url>https://github.com/entando/entando-archetypes</url>
+    <tag>5.0.1-SNAPSHOT</tag>
+    </scm>
     <developers>
         <developer>
             <id>e.santoboni</id>
@@ -32,16 +38,14 @@
         <url>http://www.entando.com/</url>
     </organization>
     <distributionManagement>
-        <repository>
-            <id>nexus-release</id>
-            <name>Releases</name>
-            <url>${maven-repository-url-release}</url>
-        </repository>
         <snapshotRepository>
-            <id>nexus-snapshot</id>
-            <name>Snapshot</name>
-            <url>${maven-repository-url-snapshot}</url>
+            <id>sonatype-nexus-snapshot</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
     </distributionManagement>
     <modules>
         <module>bundle-content-type</module>
