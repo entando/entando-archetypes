@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.entando.entando</groupId>
     <artifactId>entando-archetypes</artifactId>
-    <version>5.0.2-SNAPSHOT</version>
+    <version>5.0.2</version>
     <packaging>pom</packaging>
     <name>Entando: Archetypes</name>
     <description>Archetypes for Entando</description>
@@ -19,7 +19,7 @@
         <connection>scm:git:git@github.com:entando/entando-archetypes.git</connection>
         <developerConnection>scm:git:git@github.com:entando/entando-archetypes.git</developerConnection>
         <url>https://github.com/entando/entando-archetypes</url>
-    <tag>v5.0.2-dev</tag>
+    <tag>v5.0.2</tag>
     </scm>
     <developers>
         <developer>
@@ -47,6 +47,24 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
     <modules>
         <module>bundle-content-type</module>
         <module>bundle-theme</module>
