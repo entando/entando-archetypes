@@ -109,7 +109,7 @@
     <New id="portDataSource" class="org.eclipse.jetty.plus.jndi.Resource">
         <Arg>java:comp/env/jdbc/portDataSource</Arg>
         <Arg>
-            <New class="org.apache.commons.dbcp.BasicDataSource">
+            <New class="org.apache.commons.dbcp2.BasicDataSource">
                 <Set name="driverClassName">${profile.database.driverClassName}</Set>
                 <Set name="url">${profile.database.url.portdb}</Set>
                 <Set name="username">${profile.database.username}</Set>
@@ -121,7 +121,7 @@
     <New id="servDataSource" class="org.eclipse.jetty.plus.jndi.Resource">
         <Arg>java:comp/env/jdbc/servDataSource</Arg>
         <Arg>
-            <New class="org.apache.commons.dbcp.BasicDataSource">
+            <New class="org.apache.commons.dbcp2.BasicDataSource">
                 <Set name="driverClassName">${profile.database.driverClassName}</Set>
                 <Set name="url">${profile.database.url.servdb}</Set>
                 <Set name="username">${profile.database.username}</Set>
