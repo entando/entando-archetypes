@@ -3,7 +3,7 @@
 
 	<Environment name="logActiveFileOutput" value="true" type="java.lang.String" override="false" />
 	<Environment name="logName" value="Entando" type="java.lang.String" override="false" />
-	<Environment name="logFilePrefix" value="/home/wiz/git/Entando/target/log_Entando" type="java.lang.String" override="false" />
+	<Environment name="logFileRotatePattern" value="/home/wiz/git/Entando/target/log_Entando" type="java.lang.String" override="false" />
 	<Environment name="logLevel" value="DEBUG" type="java.lang.String" override="false" />
 	<Environment name="logFileSize" value="200000" type="java.lang.String" override="false" />
 	<Environment name="logFilesCount" value="10" type="java.lang.String" override="false" />
