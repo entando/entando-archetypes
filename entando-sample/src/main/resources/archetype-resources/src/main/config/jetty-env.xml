@@ -53,7 +53,7 @@
     <New class="org.eclipse.jetty.plus.jndi.EnvEntry">
         <Arg></Arg>
         <Arg>applicationBaseURL</Arg>
-        <Arg type="java.lang.String">http://${profile.application.baseurl.hostname}${profile.application.baseurl.port.separator}${profile.application.baseurl.port}/${profile.application.name}/</Arg>
+        <Arg type="java.lang.String">${profile.application.baseurl.protocol}://${profile.application.baseurl.hostname}${profile.application.baseurl.port.separator}${profile.application.baseurl.port}/${profile.application.name}/</Arg>
         <Arg type="boolean">false</Arg>
     </New>
 
