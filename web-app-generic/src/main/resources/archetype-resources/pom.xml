@@ -565,7 +565,6 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.4.8.v20180619</version>
                 <configuration>
-                    <scanIntervalSeconds>5</scanIntervalSeconds>
                     <webAppSourceDirectory>${basedir}/src/main/webapp</webAppSourceDirectory>
                     <webApp>
                         <defaultsDescriptor>${basedir}/src/main/config/webdefault.xml</defaultsDescriptor>
