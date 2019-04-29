@@ -838,6 +838,18 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -886,5 +898,6 @@
             <artifactId>ojdbc7</artifactId>
             <version>12.1.0.2</version>
         </dependency> -->
+        
     </dependencies>
 </project>
