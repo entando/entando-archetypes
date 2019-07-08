@@ -112,6 +112,35 @@
             </properties>
         </profile>
 
+        <profile>
+            <id>sonarCheck</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <!-- owasp plugin -->
+                        <plugin>
+                            <groupId>org.owasp</groupId>
+                            <artifactId>dependency-check-maven</artifactId>
+                            <version>5.0.0</version>
+                            <executions>
+                                <execution>
+                                    <goals>
+                                        <goal>aggregate</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                            <configuration>
+                                <autoUpdate>true</autoUpdate>
+                                <formats>ALL</formats>
+                                <skipProvidedScope>true</skipProvidedScope>
+                            </configuration>
+                        </plugin>
+                        <!-- owasp plugin end -->
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+
     </profiles>
     <properties>
         <!--
@@ -143,7 +172,7 @@
         <skipDerby>true</skipDerby>
         <skipStandalone>true</skipStandalone>
         <entando.version>5.2.0-SNAPSHOT</entando.version>
-        <spring.version>5.0.8.RELEASE</spring.version>
+        <spring.version>5.1.8.RELEASE</spring.version>
         <struts2.version>2.5.17</struts2.version>
     </properties>
     <build>
