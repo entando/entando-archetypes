@@ -1,3 +1,6 @@
+# Deprecated for Entando 6
+The archetypes can be used to generate projects for Entando 5.x builds but are not updated or maintained for Entando 6. See https://docs.entando.com for details on creating an Entando 6 application.
+
 # entando-archetypes
 
 ```entando-archetypes``` is a project that provides basic templates/models
