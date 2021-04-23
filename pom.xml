@@ -108,6 +108,5 @@
         <module>plugin</module>
         <module>entando-sample</module>
         <module>web-app-generic</module>
-        <module>web-app-bpm</module>
     </modules>
 </project>
