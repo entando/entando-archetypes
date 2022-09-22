@@ -628,7 +628,7 @@
                     <dependency>
                         <groupId>org.postgresql</groupId>
                         <artifactId>postgresql</artifactId>
-                        <version>9.4.1212</version>
+                        <version>42.3.7</version>
                     </dependency>
                     <!-- uncomment if you need -->
                     <!--
@@ -947,7 +947,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.4.1212</version>
+            <version>42.3.7</version>
             <scope>test</scope>
         </dependency>
         <dependency>
